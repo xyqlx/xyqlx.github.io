@@ -3,19 +3,48 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
+  <el-container class="container">
+    <el-header>
+      <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
-  </header>
-
-  <RouterView />
+    </el-header>
+    <el-main>
+      <RouterView />
+    </el-main>
+    <el-footer class="footer">
+      <div class="copyright">
+        ©2023 xyqlx
+        <a class="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
+      </div>      
+    </el-footer>
+  </el-container>
 </template>
 
 <style scoped>
+.container {
+  height: 100vh;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 12px;
+}
+
+.copyright {
+  opacity: 0.7;
+}
+
+a.license {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -54,7 +83,8 @@ nav a:first-of-type {
 @media (min-width: 1024px) {
   header {
     display: flex;
-    place-items: center;
+    align-items: center;
+    justify-content: center;
     padding-right: calc(var(--section-gap) / 2);
   }
 
@@ -70,7 +100,6 @@ nav a:first-of-type {
 
   nav {
     text-align: left;
-    margin-left: -1rem;
     font-size: 1rem;
 
     padding: 1rem 0;
