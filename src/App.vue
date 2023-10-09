@@ -1,16 +1,22 @@
 <script setup lang="ts">
+import { useDark } from '@vueuse/core';
+import { Sunrise, Sunset } from '@element-plus/icons-vue';
 import { RouterLink, RouterView } from 'vue-router'
+const isDarkMode = useDark();
 </script>
 
 <template>
   <el-container class="container">
     <el-header>
       <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+        <nav>
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
+        <div class="functions">
+          <el-switch v-model="isDarkMode" :inactive-action-icon="Sunrise" :active-action-icon="Sunset"/>
+        </div>
+      </div>
     </el-header>
     <el-main>
       <RouterView />
@@ -19,7 +25,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="copyright">
         ©2023 xyqlx
         <a class="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
-      </div>      
+      </div>
     </el-footer>
   </el-container>
 </template>
@@ -59,7 +65,6 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
 }
 
 nav a.router-link-exact-active {
@@ -94,8 +99,8 @@ nav a:first-of-type {
 
   header .wrapper {
     display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+    align-items: center;
+    /* flex-wrap: wrap; */
   }
 
   nav {
@@ -103,7 +108,6 @@ nav a:first-of-type {
     font-size: 1rem;
 
     padding: 1rem 0;
-    margin-top: 1rem;
   }
 }
 </style>
