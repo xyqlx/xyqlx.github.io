@@ -2,19 +2,35 @@
 import { useDark } from '@vueuse/core';
 import { Sunrise, Sunset } from '@element-plus/icons-vue';
 import { RouterLink, RouterView } from 'vue-router'
+import { useI18n } from 'vue-i18n';
 const isDarkMode = useDark();
+const { t } = useI18n();
+
 </script>
+
+<i18n>
+  {
+    "en": {
+      "home": "Home",
+      "about": "About"
+    },
+    "zh-CN": {
+      "home": "首页",
+      "about": "关于"
+    }
+  }
+</i18n>
 
 <template>
   <el-container class="container">
     <el-header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/">{{ t('home') }}</RouterLink>
+          <RouterLink to="/about">{{ t('about') }}</RouterLink>
         </nav>
         <div class="functions">
-          <el-switch v-model="isDarkMode" :inactive-action-icon="Sunrise" :active-action-icon="Sunset"/>
+          <el-switch v-model="isDarkMode" :inactive-action-icon="Sunrise" :active-action-icon="Sunset" />
         </div>
       </div>
     </el-header>
