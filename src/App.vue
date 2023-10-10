@@ -12,10 +12,12 @@ const { t } = useI18n();
   {
     "en": {
       "home": "Home",
+      "project": "Project",
       "about": "About"
     },
     "zh-CN": {
       "home": "首页",
+      "project": "项目",
       "about": "关于"
     }
   }
@@ -26,7 +28,7 @@ const { t } = useI18n();
     <el-header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">{{ t('home') }}</RouterLink>
+          <RouterLink to="/project">{{ t('project') }}</RouterLink>
           <RouterLink to="/about">{{ t('about') }}</RouterLink>
         </nav>
         <div class="functions">

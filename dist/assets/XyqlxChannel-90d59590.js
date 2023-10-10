@@ -1,0 +1,1 @@
+import{M as s}from"./MyProject-13aef73d.js";import{d as t,k as a,l as n,m as o,q as e,Z as c,u as r}from"./index-7a0b3760.js";const l="/assets/opfish-41c4d54b.png",p=["src"],m=t({__name:"XyqlxChannel",setup(_){return(i,u)=>(a(),n(s,null,{default:o(()=>[e("div",null,[c(" xyqlx channel "),e("img",{src:r(l)},null,8,p)])]),_:1}))}});export{m as default};

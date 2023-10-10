@@ -1,0 +1,1 @@
+import{Y as t,k as r,y as o,Z as c,H as n,F as s}from"./index-7a0b3760.js";const a={};function _(e,l){return r(),o(s,null,[c(" my project! "),n(e.$slots,"default")],64)}const f=t(a,[["render",_]]);export{f as M};

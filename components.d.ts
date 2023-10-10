@@ -7,12 +7,18 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ChocoberryVue: typeof import('./src/components/projects/chocoberry/ChocoberryVue.vue')['default']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElMain: typeof import('element-plus/es')['ElMain']
+    ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    ElTag: typeof import('element-plus/es')['ElTag']
+    MyProject: typeof import('./src/components/projects/MyProject.vue')['default']
+    ProjectSummary: typeof import('./src/components/projects/ProjectSummary.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    XyqlxChannel: typeof import('./src/components/projects/xyqlx-channel/XyqlxChannel.vue')['default']
   }
 }
