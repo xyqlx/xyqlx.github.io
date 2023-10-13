@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { useDark } from '@vueuse/core';
+import { toRef, useDark } from '@vueuse/core';
 import { Sunrise, Sunset } from '@element-plus/icons-vue';
 import { RouterLink, RouterView } from 'vue-router'
 import { useI18n } from 'vue-i18n';
+import { watch } from 'vue';
 const isDarkMode = useDark();
+const { locale } = useI18n({
+    useScope: 'global',
+    inheritLocale: true,
+});
 const { t } = useI18n();
+const isChinese = toRef(locale.value === 'zh-CN');
+watch(isChinese, (value) => {
+  locale.value = value ? 'zh-CN' : 'en';
+});
 
 </script>
 
@@ -33,6 +42,7 @@ const { t } = useI18n();
         </nav>
         <div class="functions">
           <el-switch v-model="isDarkMode" :inactive-action-icon="Sunrise" :active-action-icon="Sunset" />
+          <el-switch v-model="isChinese" inline-prompt inactive-text="en" active-text="zh" />
         </div>
       </div>
     </el-header>
@@ -51,6 +61,12 @@ const { t } = useI18n();
 <style scoped>
 .container {
   height: 100vh;
+}
+
+.functions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .footer {
@@ -83,6 +99,7 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
+  flex: auto;
 }
 
 nav a.router-link-exact-active {
@@ -118,13 +135,12 @@ nav a:first-of-type {
   header .wrapper {
     display: flex;
     align-items: center;
+    flex: auto;
     /* flex-wrap: wrap; */
   }
 
   nav {
-    text-align: left;
     font-size: 1rem;
-
     padding: 1rem 0;
   }
 }
