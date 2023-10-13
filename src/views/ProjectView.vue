@@ -23,7 +23,7 @@ main {
 .projects-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 20px;
 }
 
