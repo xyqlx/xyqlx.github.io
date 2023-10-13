@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toRef, useDark } from '@vueuse/core';
-import { Sunrise, Sunset } from '@element-plus/icons-vue';
+import { Sunrise, MoonNight } from '@element-plus/icons-vue';
 import { RouterLink, RouterView } from 'vue-router'
 import { useI18n } from 'vue-i18n';
 import { watch } from 'vue';
@@ -41,7 +41,7 @@ watch(isChinese, (value) => {
           <RouterLink to="/about">{{ t('about') }}</RouterLink>
         </nav>
         <div class="functions">
-          <el-switch v-model="isDarkMode" :inactive-action-icon="Sunrise" :active-action-icon="Sunset" />
+          <el-switch v-model="isDarkMode" :inactive-action-icon="Sunrise" :active-action-icon="MoonNight" />
           <el-switch v-model="isChinese" inline-prompt inactive-text="en" active-text="zh" />
         </div>
       </div>
