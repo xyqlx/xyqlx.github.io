@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MarkdownIt from 'markdown-it';
-import { onMounted, ref, toRefs } from 'vue';
+import { onMounted, ref, toRefs, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
@@ -15,7 +15,6 @@ const md = new MarkdownIt();
 const { locale } = useI18n();
 const html = ref('');
 function replaceUrls(tokens: any[], urls: { [key: string]: string }) {
-  if(urls === undefined) return;
   const ops = tokens.map(async (token) => {
     if (token.type === 'image') {
       const url = token.attrGet('src');
@@ -30,11 +29,19 @@ function replaceUrls(tokens: any[], urls: { [key: string]: string }) {
   });
   return ops;
 }
-onMounted(async () => {
+watch(locale, () => {
+  updateMarkdown();
+});
+function updateMarkdown(){
   const markdown = locale.value === 'zh-CN' ? zh.value : en.value;
   const parsed = md.parse(markdown, {});
-  replaceUrls(parsed, urls.value);
-  html.value = md.renderer.render(parsed, {});
+  if(urls?.value !== undefined) {
+    replaceUrls(parsed, urls.value);
+  }
+  html.value = md.renderer.render(parsed, {}, {});
+}
+onMounted(() => {
+  updateMarkdown();
 });
 </script>
 

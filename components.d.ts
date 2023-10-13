@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ChocoberryVue: typeof import('./src/components/projects/chocoberry/ChocoberryVue.vue')['default']
-    copy: typeof import('./src/components/projects/MyProject copy.vue')['default']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
