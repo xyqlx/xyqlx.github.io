@@ -44,5 +44,6 @@ export default defineConfig({
         additionalData: `@use "~/styles/element.scss" as *;`,
       },
     },
-  }
+  },
+  assetsInclude: ['**/*.md'],
 })
