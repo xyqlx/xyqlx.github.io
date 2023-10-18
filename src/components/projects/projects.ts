@@ -126,3 +126,7 @@ export const projects: Project[] = [
         tags: ['.NET']
     }
 ]
+
+export function getProject(name: string): Project | undefined {
+    return projects.find(p => p.name === name);
+}

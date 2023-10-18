@@ -10,7 +10,7 @@ const urls = {
 </script>
 
 <template>
-  <MyProject>
+  <MyProject project="xyqlx-channel">
     <MarkdownCellVue :en="enMarkdown" :zh="zhMarkdown" :urls="urls"></MarkdownCellVue>
   </MyProject>
 </template>

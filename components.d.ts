@@ -15,6 +15,7 @@ declare module 'vue' {
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTag: typeof import('element-plus/es')['ElTag']
+    IFrameCell: typeof import('./src/components/projects/IFrameCell.vue')['default']
     MarkdownCell: typeof import('./src/components/projects/MarkdownCell.vue')['default']
     MyProject: typeof import('./src/components/projects/MyProject.vue')['default']
     ProjectSummary: typeof import('./src/components/projects/ProjectSummary.vue')['default']
