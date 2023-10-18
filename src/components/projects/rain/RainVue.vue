@@ -4,8 +4,8 @@ import IFrameCell from '../IFrameCell.vue';
 </script>
 
 <template>
-  <MyProject project="chocoberry">
-   <IFrameCell src="https://xyqlx.github.io/chocoberry-ng/" :white-background="true" :scale="0.5" :transform="true"></IFrameCell>
+  <MyProject project="rain">
+   <IFrameCell src="https://xyqlx.github.io/rain/" :white-background="true" :scale="0.5" :transform="false"></IFrameCell>
   </MyProject>
 </template>
 

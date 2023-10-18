@@ -12,7 +12,11 @@ const currentProject = getProject(project.value);
 <template>
   <template v-if="currentProject">
     <h1>{{ currentProject.name }}</h1>
-    <slot></slot>
+    <a :href="currentProject.github" v-if="currentProject.github">GitHub</a>
+    <a :href="currentProject.gitee" v-if="currentProject.gitee">Gitee</a>
+    <div>
+      <slot></slot>
+    </div>
   </template>
 </template>
 
