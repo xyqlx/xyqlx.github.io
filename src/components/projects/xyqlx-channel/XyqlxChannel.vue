@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MyProject from '../MyProject.vue';
-import MarkdownCellVue from '../MarkdownCell.vue';
+import MarkdownCell from '../MarkdownCell.vue';
 import opfish from './opfish.png';
 import enMarkdown from './en.md?raw';
 import zhMarkdown from './zh.md?raw';
@@ -11,7 +11,7 @@ const urls = {
 
 <template>
   <MyProject project="xyqlx-channel">
-    <MarkdownCellVue :en="enMarkdown" :zh="zhMarkdown" :urls="urls"></MarkdownCellVue>
+    <MarkdownCell :en="enMarkdown" :zh="zhMarkdown" :urls="urls"></MarkdownCell>
   </MyProject>
 </template>
 

@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import { projects } from '@/components/projects/projects'
 
 const projectsRoutes = projects.map(p => ({

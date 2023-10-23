@@ -11,12 +11,14 @@ const currentProject = getProject(project.value);
 
 <template>
   <template v-if="currentProject">
-    <h1>{{ currentProject.name }}</h1>
-    <a :href="currentProject.github" v-if="currentProject.github">GitHub</a>
-    <a :href="currentProject.gitee" v-if="currentProject.gitee">Gitee</a>
-    <div>
-      <slot></slot>
-    </div>
+    <el-scrollbar height="calc(100vh - 160px)">
+      <h1>{{ currentProject.name }}</h1>
+      <a :href="currentProject.github" v-if="currentProject.github">GitHub</a>
+      <a :href="currentProject.gitee" v-if="currentProject.gitee">Gitee</a>
+      <div>
+        <slot></slot>
+      </div>
+    </el-scrollbar>
   </template>
 </template>
 

@@ -105,7 +105,7 @@ export const projects: Project[] = [
     {
         name: 'asoul-cursors',
         component: () => import('./asoul-cursors/ASOULCursors.vue'),
-        tags: ['Chrome'],
+        tags: ['Chrome', 'Angular'],
         github: "https://github.com/xyqlx/asoul-cursors"
     },
     {
