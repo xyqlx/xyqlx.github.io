@@ -1,3 +1,5 @@
+![logo](https://raw.githubusercontent.com/xyqlx/asoul-cursors/master/src/assets/images/icon128.png)
+
 ## Introduction
 
 This is a Chrome extension that switches the mouse cursor based on the website URL. You can set the mouse cursor and matching URLs yourself.

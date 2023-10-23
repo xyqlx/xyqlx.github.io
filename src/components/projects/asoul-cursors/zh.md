@@ -1,3 +1,5 @@
+![logo](https://raw.githubusercontent.com/xyqlx/asoul-cursors/master/src/assets/images/icon128.png)
+
 ## 介绍
 
 根据网页地址切换鼠标指针的Chrome扩展，鼠标指针与匹配网址可以自行设置。

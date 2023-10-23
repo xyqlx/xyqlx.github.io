@@ -7,7 +7,6 @@ import MarkdownCell from '../MarkdownCell.vue';
 
 <template>
   <MyProject project="asoul-cursors">
-    <img src="https://raw.githubusercontent.com/xyqlx/asoul-cursors/master/src/assets/images/icon128.png" alt="A-SOUL Cursors" width="100">
     <MarkdownCell :en="enMarkdown" :zh="zhMarkdown">
     </MarkdownCell>
   </MyProject>
