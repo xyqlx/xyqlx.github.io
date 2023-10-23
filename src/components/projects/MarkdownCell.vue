@@ -49,4 +49,30 @@ onMounted(() => {
   <div v-html="html"></div>
 </template>
 
-<style></style>
+<style>
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+ul, p {
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+img {
+  max-width: 100%;
+}
+p:has(img) {
+  text-align: center;
+}
+</style>
