@@ -1,0 +1,1 @@
+import{_ as e}from"./MyProject-cc9d09ef.js";import{d as o,o as r,g as t}from"./index-477279a9.js";import"./tag-4d8e78b5.js";const m=o({__name:"PCodeViewer",setup(a){return(c,p)=>(r(),t(e,{project:"pcode-viewer"}))}});export{m as default};

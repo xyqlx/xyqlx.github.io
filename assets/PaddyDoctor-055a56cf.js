@@ -1,0 +1,1 @@
+import{_ as o}from"./MyProject-cc9d09ef.js";import{d as r,o as t,g as e}from"./index-477279a9.js";import"./tag-4d8e78b5.js";const m=r({__name:"PaddyDoctor",setup(a){return(c,_)=>(t(),e(o,{project:"PaddyDoctor"}))}});export{m as default};

@@ -1,0 +1,1 @@
+import{_ as e}from"./MyProject-cc9d09ef.js";import{d as o,o as t,g as r}from"./index-477279a9.js";import"./tag-4d8e78b5.js";const m=o({__name:"SDWebUIWebSocket",setup(c){return(s,a)=>(t(),r(e,{project:"sd-webui-websocket"}))}});export{m as default};

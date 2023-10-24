@@ -1,0 +1,1 @@
+import{_ as e}from"./MyProject-cc9d09ef.js";import{d as o,o as r,g as t}from"./index-477279a9.js";import"./tag-4d8e78b5.js";const m=o({__name:"PL00WebIDE",setup(a){return(_,c)=>(r(),t(e,{project:"PL00WebIDE"}))}});export{m as default};

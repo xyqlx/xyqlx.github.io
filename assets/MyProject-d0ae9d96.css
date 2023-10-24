@@ -1,0 +1,1 @@
+.title-bar{display:flex;flex-direction:row;align-items:center}.shortcuts{margin-top:.5rem;margin-left:1rem}a:hover{background-color:transparent}.tag{color:var(--color-text)}.tag:hover{text-decoration:underline}.tag-container{margin-left:.8rem}
