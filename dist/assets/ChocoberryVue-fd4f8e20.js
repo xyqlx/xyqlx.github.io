@@ -1,1 +1,0 @@
-import{M as e}from"./MyProject-13aef73d.js";import{d as t,k as o,l as a,m as r,q as s}from"./index-7a0b3760.js";const c=s("div",null," change this ",-1),p=t({__name:"ChocoberryVue",setup(n){return(_,l)=>(o(),a(e,null,{default:r(()=>[c]),_:1}))}});export{p as default};

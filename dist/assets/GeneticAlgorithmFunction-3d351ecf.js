@@ -1,0 +1,1 @@
+import{_ as o}from"./MyProject-cc9d09ef.js";import{d as t,o as e,g as n}from"./index-477279a9.js";import"./tag-4d8e78b5.js";const p=t({__name:"GeneticAlgorithmFunction",setup(r){return(c,_)=>(e(),n(o,{project:"genetic_algorithm_function"}))}});export{p as default};
