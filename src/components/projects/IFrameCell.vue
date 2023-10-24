@@ -39,7 +39,7 @@ const iframeStyle = computed(() => {
     style.width = `${actualScale * 100}%`;
     style.marginLeft = `${(1 - actualScale) * 50}%`;
   }
-  if(whiteBackground?.value && isLoaded) {
+  if(whiteBackground?.value && isLoaded.value) {
     style.backgroundColor = 'white';
   }
   return style;
