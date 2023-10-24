@@ -2,6 +2,10 @@
 
 xyqlx的记录工具
 
+<video>
+  <source src="https://github.com/xyqlx/xyqlx.github.io/assets/40012783/29eb14a5-6330-473c-96b5-5da5ae0b2316"></source>
+</video>
+
 ## 背景
 
 寄托了过多的灵感然而仅仅实现了很小一部分的记录工具

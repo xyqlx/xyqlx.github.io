@@ -2,6 +2,10 @@
 
 Records tool for xyqlx.
 
+<video>
+  <source src="https://github.com/xyqlx/xyqlx.github.io/assets/40012783/29eb14a5-6330-473c-96b5-5da5ae0b2316"></source>
+</video>
+
 ## Background
 
 The recording tool only implemented a small part of the excessive inspiration it contained. It may be xyqlx's largest and longest frontend project, with over 10,000 lines of code. However, it is not difficult to manage because some modules are on the same level.
