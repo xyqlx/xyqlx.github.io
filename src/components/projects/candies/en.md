@@ -2,10 +2,6 @@
 
 Records tool for xyqlx.
 
-<video>
-  <source src="https://github.com/xyqlx/xyqlx.github.io/assets/40012783/29eb14a5-6330-473c-96b5-5da5ae0b2316"></source>
-</video>
-
 ## Background
 
 The recording tool only implemented a small part of the excessive inspiration it contained. It may be xyqlx's largest and longest frontend project, with over 10,000 lines of code. However, it is not difficult to manage because some modules are on the same level.
@@ -49,6 +45,14 @@ In fact, OneNote is a good choice. It was also the only designated note-taking t
 Most other software is based on Markdown, and xyqlx has no objections to this format. However, due to the influence of OneNote, xyqlx is very persistent in recording the input time of each sentence. However, Markdown does not support this operation (PS: Setting aside the significance of this data, it now appears that there are alternatives).
 
 Although Candies is a relatively unsuccessful work, in a positive sense, it has at least preserved some fragments of xyqlx's life. xyqlx is a very forgetful person and believes that memory constitutes the existence of "self". What was the past self like? What forgotten things did it experience in the past? What meaningless thoughts did it have? Only the "present self" would be interested in these things. That is the value of Candies.
+
+### Functions
+
+* View Recent Notes
+* Filter Notes based on tags or search terms
+* Add Note as plain text
+* Viewing, Adding, Editing, and Modifying Activities
+* Tag Notes
 
 ### Version Name
 
