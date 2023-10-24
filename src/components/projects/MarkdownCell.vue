@@ -55,6 +55,8 @@ h1 {
 }
 h2 {
   font-size: 1.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--color-border);
 }
 h3 {
   font-size: 1.2rem;
@@ -63,6 +65,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
+}
+table, th, td {
+  border: 1px solid var(--color-border);
+  border-collapse: collapse;
+  padding: 0.2rem 0.5rem;
 }
 ul, p {
   font-size: 1rem;
