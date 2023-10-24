@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { toRefs } from 'vue';
+import { toRefs, useSlots } from 'vue';
 import { getProject } from './projects';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   project: string;
@@ -17,7 +18,20 @@ const tagNames = [
   "Gitee",
   "Demo"
 ];
+const defaultSlot = useSlots().default
+const { t } = useI18n();
 </script>
+
+<i18n>
+  {
+    "en": {
+      "under construction": "This page is under construction.",
+    },
+    "zh-CN": {
+      "under construction": "本页面正在建设中。",
+    }
+  }
+</i18n>
 
 <template>
   <template v-if="currentProject">
@@ -34,6 +48,9 @@ const tagNames = [
       </div>
       <div>
         <slot></slot>
+        <template v-if="!defaultSlot">
+          {{ t('under construction') }}
+        </template>
       </div>
     </el-scrollbar>
   </template>
