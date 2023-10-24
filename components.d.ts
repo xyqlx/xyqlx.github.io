@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AsoulCursors: typeof import('./src/components/projects/asoul-cursors/AsoulCursors.vue')['default']
     ASOULCursors: typeof import('./src/components/projects/asoul-cursors/ASOULCursors.vue')['default']
     BilibiliJustListening: typeof import('./src/components/projects/bilibili-just-listening/BilibiliJustListening.vue')['default']
     CandiesVue: typeof import('./src/components/projects/candies/CandiesVue.vue')['default']
@@ -39,10 +38,10 @@ declare module 'vue' {
     RainVue: typeof import('./src/components/projects/rain/RainVue.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SDWebUIWebsocket: typeof import('./src/components/projects/sd-webui-websocket/SDWebUIWebsocket.vue')['default']
     SDWebUIWebSocket: typeof import('./src/components/projects/sd-webui-websocket/SDWebUIWebSocket.vue')['default']
     TSPAPP: typeof import('./src/components/projects/tsp-app/TSPAPP.vue')['default']
     UnderwaterFishSystem: typeof import('./src/components/projects/underwater-fish-system/UnderwaterFishSystem.vue')['default']
+    VideoCell: typeof import('./src/components/projects/VideoCell.vue')['default']
     XyqlxChannel: typeof import('./src/components/projects/xyqlx-channel/XyqlxChannel.vue')['default']
   }
 }
