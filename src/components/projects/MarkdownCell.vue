@@ -76,6 +76,10 @@ ul, p {
   margin-top: 0;
   margin-bottom: 0.8rem;
 }
+table {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
 img {
   max-width: 100%;
 }
