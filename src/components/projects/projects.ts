@@ -13,6 +13,7 @@ export type Project = {
     cover?: string,
     github?: string,
     gitee?: string,
+    demo?: string
 };
 
 export const projects: Project[] = [
@@ -20,19 +21,22 @@ export const projects: Project[] = [
         name: 'xyqlx-channel',
         component: () => import('./xyqlx-channel/XyqlxChannel.vue'),
         tags: ['Vue'],
-        github: "https://github.com/xyqlx/xyqlx.github.io"
+        github: "https://github.com/xyqlx/xyqlx.github.io",
+        demo: "https://xyqlx.github.io"
     },
     {
         name: 'rain',
         component: () => import('./rain/RainVue.vue'),
         tags: ['WebGL'],
-        github: "https://github.com/xyqlx/rain"
+        github: "https://github.com/xyqlx/rain",
+        demo: "https://xyqlx.github.io/rain"
     },
     {
         name: 'chocoberry',
         component: () => import('./chocoberry/ChocoberryVue.vue'),
         tags: ['Angular', 'NestJS'],
-        github: "https://github.com/xyqlx/chocoberry-ng"
+        github: "https://github.com/xyqlx/chocoberry-ng",
+        demo: "https://xyqlx.github.io/chocoberry-ng"
     },
     {
         name: 'MouseHalo',

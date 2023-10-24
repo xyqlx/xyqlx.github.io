@@ -7,14 +7,31 @@ const props = defineProps<{
 }>();
 const { project } = toRefs(props);
 const currentProject = getProject(project.value);
+const shortcuts = [
+  currentProject?.github,
+  currentProject?.gitee,
+  currentProject?.demo
+];
+const tagNames = [
+  "GitHub",
+  "Gitee",
+  "Demo"
+];
 </script>
 
 <template>
   <template v-if="currentProject">
     <el-scrollbar height="calc(100vh - 160px)">
-      <h1>{{ currentProject.name }}</h1>
-      <a :href="currentProject.github" v-if="currentProject.github">GitHub</a>
-      <a :href="currentProject.gitee" v-if="currentProject.gitee">Gitee</a>
+      <div class="title-bar">
+        <h1>{{ currentProject.name }}</h1>
+        <div class="shortcuts">
+          <template v-for="(url, i) in shortcuts" :key="i">
+            <a class="tag-container" v-if="url" :href="url">
+              <el-tag class="tag" effect="plain" color="transparent">{{ tagNames[i] }}</el-tag>
+            </a>
+          </template>
+        </div>
+      </div>
       <div>
         <slot></slot>
       </div>
@@ -22,4 +39,26 @@ const currentProject = getProject(project.value);
   </template>
 </template>
 
-<style></style>
+<style>
+.title-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.shortcuts {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+a:hover {
+  background-color: transparent;
+}
+.tag {
+  color: var(--color-text);
+}
+.tag:hover {
+  text-decoration: underline;
+}
+.tag-container {
+  margin-left: 0.8rem;
+}
+</style>
