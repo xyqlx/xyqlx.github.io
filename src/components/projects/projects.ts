@@ -22,61 +22,101 @@ export const projects: Project[] = [
         component: () => import('./xyqlx-channel/XyqlxChannel.vue'),
         tags: ['Vue'],
         github: "https://github.com/xyqlx/xyqlx.github.io",
-        demo: "https://xyqlx.github.io"
+        demo: "https://xyqlx.github.io",
+        description: {
+            'en': "Personal website (https://xyqlx.github.io)",
+            'zh-CN': "个人网页 https://xyqlx.github.io"
+        }
     },
     {
         name: 'rain',
         component: () => import('./rain/RainVue.vue'),
         tags: ['WebGL'],
         github: "https://github.com/xyqlx/rain",
-        demo: "https://xyqlx.github.io/rain"
+        demo: "https://xyqlx.github.io/rain",
+        description: {
+            'en': "A simple example of raining effect simulation using WebGL",
+            'zh-CN': "一个使用WebGL实现的2D雨中水波效果模拟"
+        }
     },
     {
         name: 'chocoberry',
         component: () => import('./chocoberry/ChocoberryVue.vue'),
         tags: ['Angular', 'NestJS'],
         github: "https://github.com/xyqlx/chocoberry-ng",
-        demo: "https://xyqlx.github.io/chocoberry-ng"
+        demo: "https://xyqlx.github.io/chocoberry-ng",
+        description: {
+            'en': "GPU server monitoring system",
+            'zh-CN': "GPU服务器监控系统"
+        }
     },
     {
         name: 'MouseHalo',
         component: () => import('./mouse-halo/MouseHalo.vue'),
         tags: ['WPF', '.NET'],
-        github: "https://github.com/xyqlx/MouseHalo"
+        github: "https://github.com/xyqlx/MouseHalo",
+        description: {
+            'en': "Show input method status and copy hint near the mouse cursor",
+            'zh-CN': "在鼠标附近显示输入法中英状态和复制提示"
+        }
     },
     {
         name: 'BilibiliJustListening',
         component: () => import('./bilibili-just-listening/BilibiliJustListening.vue'),
         tags: ['Playwright', '.NET'],
-        github: "https://github.com/xyqlx/BilibiliJustListening"
+        github: "https://github.com/xyqlx/BilibiliJustListening",
+        description: {
+            'en': "Use Playwright to access Bilibili from the command line",
+            'zh-CN': "在命令行中用Playwright访问哔哩哔哩"
+        }
     },
     {
         name: 'layer-anything',
         component: () => import('./layer-anything/LayerAnything.vue'),
-        tags: ['Segment Anything', {'en': 'Machine Learning', 'zh-CN': '机器学习'}, 'Vue']
+        tags: ['Segment Anything', {'en': 'Machine Learning', 'zh-CN': '机器学习'}, 'Vue'],
+        description: {
+            'en': "Layer anything with a single click",
+            'zh-CN': "图片自动分层"
+        }
     },
     {
         name: 'sd-webui-websocket',
         component: () => import('./sd-webui-websocket/SDWebUIWebSocket.vue'),
         tags: ['Stable Diffusion WebUI', 'WebSocket'],
-        github: "https://github.com/xyqlx/sd-webui-websocket"
+        github: "https://github.com/xyqlx/sd-webui-websocket",
+        description: {
+            'en': "WebSocket server for Stable Diffusion WebUI",
+            'zh-CN': "用于Stable Diffusion WebUI的WebSocket服务器"
+        }
     },
     {
         name: 'underwater-fish-system',
         component: () => import('./underwater-fish-system/UnderwaterFishSystem.vue'),
-        tags: [{'en': 'Machine Learning', 'zh-CN': '机器学习'}, {'en': 'Object Detection', 'zh-CN': '目标检测'}, 'PyTorch', 'FastAPI', 'Vue']
+        tags: [{'en': 'Machine Learning', 'zh-CN': '机器学习'}, {'en': 'Object Detection', 'zh-CN': '目标检测'}, 'PyTorch', 'FastAPI', 'Vue'],
+        description: {
+            'en': "Underwater fish target detection and semantic segmentation system",
+            'zh-CN': "水下鱼类目标检测与语义分割系统"
+        }
     },
     {
         name: 'ExcelColumnSplitter',
         component: () => import('./excel-column-splitter/ExcelColumnSplitter.vue'),
-        tags: ['Excel', 'Office', '.NET'],
-        gitee: "https://gitee.com/xyqlx/excel-column-splitter"
+        tags: ['Excel', 'Office', '.NET', 'VSTO'],
+        gitee: "https://gitee.com/xyqlx/excel-column-splitter",
+        description: {
+            'en': "Excel Add-in for Splitting and Stacking Data",
+            'zh-CN': "帮助分列与分行的Excel插件"
+        }
     },
     {
         name: 'python-tutorial',
         component: () => import('./python-tutorial/PythonTutorial.vue'),
         tags: ['Python'],
-        gitee: "https://gitee.com/xyqlx/python-tutorial"
+        gitee: "https://gitee.com/xyqlx/python-tutorial",
+        description: {
+            'en': "Web version of a runnable Python tutorial",
+            'zh-CN': "可以运行的Python教程网页版"
+        }
     },
     {
         name: 'PaddyDoctor',
