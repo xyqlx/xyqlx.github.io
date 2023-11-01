@@ -2,16 +2,10 @@
 </script>
 
 <template>
-  <div class="main">
-    <h1>This is home page</h1>
-  </div>
+  <h1>This is tag page</h1>
 </template>
 
 <style>
 @media (min-width: 1024px) {
-  .main {
-    display: flex;
-    align-items: center;
-  }
 }
 </style>

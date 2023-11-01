@@ -4,22 +4,16 @@ import { projects } from '@/components/projects/projects';
 </script>
 
 <template>
-  <div class="main">
-    <el-scrollbar height="calc(100vh - 160px)">
-      <div class="projects-container">
-        <template v-for="project in projects" :key="project.name">
-          <ProjectSummary :project="project" />
-        </template>
-      </div>
-    </el-scrollbar>
-  </div>
+  <el-scrollbar height="calc(100vh - 160px)">
+    <div class="projects-container">
+      <template v-for="project in projects" :key="project.name">
+        <ProjectSummary :project="project" />
+      </template>
+    </div>
+  </el-scrollbar>
 </template>
 
 <style>
-.main {
-  display: flex;
-  justify-content: center;
-}
 .projects-container {
   display: flex;
   flex-wrap: wrap;
@@ -27,6 +21,5 @@ import { projects } from '@/components/projects/projects';
   gap: 20px;
 }
 
-@media (max-width: 1024px) {
-}
+@media (max-width: 1024px) {}
 </style>

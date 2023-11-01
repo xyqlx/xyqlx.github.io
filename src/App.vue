@@ -69,6 +69,11 @@ watch(isChinese, (value) => {
   gap: 10px;
 }
 
+.main {
+  display: flex;
+  justify-content: center;
+}
+
 .footer {
   text-align: center;
   padding: 1rem;

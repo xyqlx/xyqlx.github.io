@@ -86,4 +86,7 @@ img {
 p:has(img) {
   text-align: center;
 }
+pre {
+  white-space: pre-wrap;
+}
 </style>

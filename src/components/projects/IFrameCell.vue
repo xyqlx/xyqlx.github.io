@@ -3,10 +3,10 @@ import { computed, ref, toRefs } from 'vue';
 const props = defineProps<{
   src: string;
   scale?: number;
-  transform?: boolean;
+  transformScale?: number;
   whiteBackground?: boolean;
 }>();
-const { src, scale, transform, whiteBackground } = toRefs(props);
+const { src, scale, transformScale, whiteBackground } = toRefs(props);
 const isLoaded = ref(false);
 
 function resizeIFrame(iframe: HTMLIFrameElement){
@@ -15,8 +15,8 @@ function resizeIFrame(iframe: HTMLIFrameElement){
   if (screen) {
     const height = iframe.clientWidth / screen.width * screen.height;
     iframe.style.height = `${height}px`;
-    if(transform.value){
-      iframe.style.marginBottom = `-${height * (1 - (scale?.value ?? 1))}px`
+    if(transformScale?.value){
+      iframe.style.marginBottom = `-${height * (1 - (transformScale?.value ?? 1))}px`
     }
   }
 }
@@ -30,15 +30,14 @@ function onIFrameLoad($event: Event) {
 const iframeStyle = computed(() => {
   const style: any = {};
   const actualScale = scale?.value ?? 1;
-  if(transform?.value){
-    style.transform = `scale(${actualScale})`;
-    style.width = `100%`;
+  const actualTransformScale = transformScale?.value ?? 1;
+  if(actualTransformScale !== 1){
+    style.transform = `scale(${actualTransformScale})`;
     style.transformOrigin = 'top center';
   }
-  else {
-    style.width = `${actualScale * 100}%`;
-    style.marginLeft = `${(1 - actualScale) * 50}%`;
-  }
+  const displayScale = actualScale / actualTransformScale;
+  style.width = `${displayScale * 100}%`;
+  style.marginLeft = `${(1 - displayScale) * 50}%`;
   if(whiteBackground?.value && isLoaded.value) {
     style.backgroundColor = 'white';
   }

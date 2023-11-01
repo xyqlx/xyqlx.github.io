@@ -34,7 +34,7 @@ const { t } = useI18n();
 </i18n>
 
 <template>
-  <template v-if="currentProject">
+  <div class="project-container" v-if="currentProject">
     <el-scrollbar height="calc(100vh - 160px)">
       <div class="title-bar">
         <h1>{{ currentProject.name }}</h1>
@@ -53,10 +53,13 @@ const { t } = useI18n();
         </template>
       </div>
     </el-scrollbar>
-  </template>
+  </div>
 </template>
 
 <style>
+.project-container {
+  width: 60%;
+}
 .title-bar {
   display: flex;
   flex-direction: row;
@@ -77,5 +80,10 @@ a:hover {
 }
 .tag-container {
   margin-left: 0.8rem;
+}
+@media (max-width: 1024px) {
+  .project-container {
+    width: 100%;
+  }
 }
 </style>

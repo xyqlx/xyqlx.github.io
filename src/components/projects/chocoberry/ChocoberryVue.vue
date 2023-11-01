@@ -8,7 +8,7 @@ import MarkdownCell from '../MarkdownCell.vue';
 
 <template>
   <MyProject project="chocoberry">
-   <IFrameCell src="https://xyqlx.github.io/chocoberry-ng/" :white-background="true" :scale="0.5" :transform="true"></IFrameCell>
+   <IFrameCell src="https://xyqlx.github.io/chocoberry-ng/" :white-background="true" :scale="1" :transform-scale="0.5"></IFrameCell>
    <MarkdownCell :en="enMarkdown" :zh="zhMarkdown"></MarkdownCell>
   </MyProject>
 </template>

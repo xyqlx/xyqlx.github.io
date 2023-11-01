@@ -8,7 +8,7 @@ import MarkdownCell from '../MarkdownCell.vue';
 
 <template>
   <MyProject project="rain">
-   <IFrameCell src="https://xyqlx.github.io/rain/" :white-background="true" :scale="0.5" :transform="false"></IFrameCell>
+   <IFrameCell src="https://xyqlx.github.io/rain/" :white-background="true"></IFrameCell>
    <MarkdownCell :en="enMarkdown" :zh="zhMarkdown"></MarkdownCell>
   </MyProject>
 </template>
