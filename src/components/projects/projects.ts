@@ -122,71 +122,121 @@ export const projects: Project[] = [
         name: 'PaddyDoctor',
         component: () => import('./paddy-doctor/PaddyDoctor.vue'),
         tags: ['Android', 'Flask'],
-        gitee: "https://gitee.com/stop-daydreaming/paddy-doctor-flask-server"
+        gitee: "https://gitee.com/stop-daydreaming/paddy-doctor-flask-server",
+        description: {
+            'en': "Identification of Crop Diseases and Pests",
+            'zh-CN': "农作物病虫害识别应用"
+        }
     },
     {
         name: 'candies',
         component: () => import('./candies/CandiesVue.vue'),
-        tags: ['Angular']
+        tags: ['Angular'],
+        description: {
+            'en': "Personal recording tool",
+            'zh-CN': "xyqlx的个人记录工具"
+        }
     },
     {
         name: 'Cocoa',
         component: () => import('./cocoa/CocoaVue.vue'),
-        tags: ['.NET']
+        tags: ['.NET'],
+        description: {
+            'en': "Personal Windows utility portal",
+            'zh-CN': "个人的Windows实用工具入口"
+        }
     },
     {
         name: 'none-of-azure-kinect',
         component: () => import('./none-of-azure-kinect/NoneOfAzureKinect.vue'),
         tags: ['Electron', 'Angular'],
-        github: "https://github.com/xyqlx/none-of-azure-kinect"
+        github: "https://github.com/xyqlx/none-of-azure-kinect",
+        description: {
+            'en': "A simple tool for viewing connnected Azure Kinect data",
+            'zh-CN': "一个简单的非官方Azure Kinect数据查看工具"
+        }
     },
     {
         name: 'ChocolaTimer',
         component: () => import('./chocola-timer/ChocolaTimer.vue'),
-        tags: ['.NET'],
-        github: "https://github.com/xyqlx/ChocolaTimer"
+        tags: ['.NET', 'WPF'],
+        github: "https://github.com/xyqlx/ChocolaTimer",
+        description: {
+            'en': "Simple timers available for Windows",
+            'zh-CN': "Windows可用的简单计时器"
+        }
     },
     {
         name: 'asoul-cursors',
         component: () => import('./asoul-cursors/ASOULCursors.vue'),
         tags: ['Chrome', 'Angular'],
-        github: "https://github.com/xyqlx/asoul-cursors"
+        github: "https://github.com/xyqlx/asoul-cursors",
+        description: {
+            'en': "A Chrome extension for custom mouse cursors",
+            'zh-CN': "根据网页地址切换鼠标指针的Chrome扩展"
+        }
     },
     {
         name: 'pcode-viewer',
         component: () => import('./pcode-viewer/PCodeViewer.vue'),
         tags: ['Angular', {'en': 'Compilation Principles', 'zh-CN': '编译原理'}, 'ANTLR'],
-        gitee: "https://gitee.com/xyqlx/pcode-viewer"
+        gitee: "https://gitee.com/xyqlx/pcode-viewer",
+        description: {
+            'en': "Online Interpreter for P-code Languages",
+            'zh-CN': "类P-code语言在线解释器"
+        }
     },
     {
         name: 'PL00WebIDE',
         component: () => import('./pl00-webide/PL00WebIDE.vue'),
         tags: ['Angular', {'en': 'Compilation Principles', 'zh-CN': '编译原理'}, 'ANTLR'],
-        gitee: "https://gitee.com/xyqlx/PL00WebIDE"
+        gitee: "https://gitee.com/xyqlx/PL00WebIDE",
+        description: {
+            'en': "Online IDE for extended PL/0 language",
+            'zh-CN': "扩展的PL/0语言的在线IDE"
+        }
     },
     {
         name: 'tsp_app',
         component: () => import('./tsp-app/TSPAPP.vue'),
-        tags: ['Angular'],
-        gitee: "https://gitee.com/xyqlx/tsp_app"
+        tags: ['Angular', {'en': 'Genetic Algorithm', 'zh-CN': '遗传算法' }],
+        gitee: "https://gitee.com/xyqlx/tsp_app",
+        demo: "http://xyqlx.gitee.io/tsp_view/",
+        description: {
+            'en': "Visualization of several solutions to TSP problems",
+            'zh-CN': "TSP问题的几种解法可视化"
+        }
     },
     {
         name: 'genetic_algorithm_function',
         component: () => import('./genetic-algorithm-function/GeneticAlgorithmFunction.vue'),
-        tags: ['Angular'],
-        gitee: "https://gitee.com/xyqlx/genetic_algorithm_function"
+        tags: ['Angular', {'en': 'Genetic Algorithm', 'zh-CN': '遗传算法' }],
+        gitee: "https://gitee.com/xyqlx/genetic_algorithm_function",
+        demo: "https://xyqlx.gitee.io/genetic_algorithm_function/",
+        description: {
+            'en': 'Genetic algorithm for solving the maximum value of a function',
+            'zh-CN': '遗传算法求解函数最大值'
+        }
     },
     {
         name: 'OneNoteTagGUI',
         component: () => import('./onenote-tag-gui/OneNoteTagGUI.vue'),
         tags: ['.NET', "OneNote", "WPF"],
-        github: "https://github.com/xyqlx/OneNoteTagGUI"
+        github: "https://github.com/xyqlx/OneNoteTagGUI",
+        description: {
+            'en': 'A GUI tool for managing OneNote tags',
+            'zh-CN': '管理OneNote标签的GUI工具'
+        }
     },
     {
         name: 'onom',
         component: () => import('./onenote-object-model/OneNoteObjectModel.vue'),
         tags: ['.NET', "OneNote"],
-        github: "https://github.com/xyqlx/onom"
+        github: "https://github.com/xyqlx/onom",
+        description: {
+            'en': 'OneNote Object Model',
+            'zh-CN': 'OneNote对象模型'
+        }
     }
 ]
 
