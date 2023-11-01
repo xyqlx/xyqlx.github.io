@@ -29,6 +29,9 @@ function navigate() {
         <span v-else>{{ tag['en'] }}</span>
       </el-tag>
     </div>
+    <div class="description" v-if="project?.description">
+      {{ (project.description as any)[locale] }}
+    </div>
   </div>
 </template>
 
@@ -58,7 +61,12 @@ function navigate() {
 .tag {
   color: var(--color-text);
 }
-@media (min-width: 1024px) {
+.description {
+  margin-top: 10px;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+@media (max-width: 1024px) {
   
 }
 </style>
