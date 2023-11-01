@@ -4,19 +4,19 @@ import { projects } from '@/components/projects/projects';
 </script>
 
 <template>
-  <main>
+  <div class="main">
     <el-scrollbar height="calc(100vh - 160px)">
       <div class="projects-container">
-        <div v-for="project in projects" :key="project.name">
+        <template v-for="project in projects" :key="project.name">
           <ProjectSummary :project="project" />
-        </div>
+        </template>
       </div>
     </el-scrollbar>
-  </main>
+  </div>
 </template>
 
 <style>
-main {
+.main {
   display: flex;
   justify-content: center;
 }
@@ -27,5 +27,6 @@ main {
   gap: 20px;
 }
 
-@media (min-width: 1024px) {}
+@media (max-width: 1024px) {
+}
 </style>

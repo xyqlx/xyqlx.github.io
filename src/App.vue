@@ -6,8 +6,8 @@ import { useI18n } from 'vue-i18n';
 import { watch } from 'vue';
 const isDarkMode = useDark();
 const { locale } = useI18n({
-    useScope: 'global',
-    inheritLocale: true,
+  useScope: 'global',
+  inheritLocale: true,
 });
 const { t } = useI18n();
 const isChinese = toRef(locale.value === 'zh-CN');
@@ -46,7 +46,7 @@ watch(isChinese, (value) => {
         </div>
       </div>
     </el-header>
-    <el-main>
+    <el-main class="main">
       <RouterView />
     </el-main>
     <el-footer class="footer">
@@ -88,18 +88,30 @@ a.license {
 header {
   line-height: 1.5;
   max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: calc(var(--section-gap) / 2);
+}
+
+header .wrapper {
+  display: flex;
+  align-items: center;
+  flex: auto;
+  /* flex-wrap: wrap; */
 }
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 2rem 0 0;
 }
 
 nav {
   width: 100%;
-  font-size: 12px;
   text-align: center;
   flex: auto;
+  font-size: 1rem;
+  padding: 1rem 0;
 }
 
 nav a.router-link-exact-active {
@@ -120,28 +132,9 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    align-items: center;
-    flex: auto;
-    /* flex-wrap: wrap; */
-  }
-
-  nav {
-    font-size: 1rem;
-    padding: 1rem 0;
+@media (max-width: 512px) {
+  .main {
+    padding: 0;
   }
 }
 </style>

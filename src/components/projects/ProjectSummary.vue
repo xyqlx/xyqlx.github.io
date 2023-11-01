@@ -66,7 +66,9 @@ function navigate() {
   font-size: 1rem;
   word-wrap: break-word;
 }
-@media (max-width: 1024px) {
-  
+@media (max-width: 512px) {
+  .card {
+    width: min(90%, 90vw);
+  }
 }
 </style>

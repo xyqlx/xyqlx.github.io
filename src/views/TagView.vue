@@ -2,11 +2,9 @@
 </script>
 
 <template>
-  <main>
-    <div class="main">
-      <h1>This is home page</h1>
-    </div>
-  </main>
+  <div class="main">
+    <h1>This is home page</h1>
+  </div>
 </template>
 
 <style>
