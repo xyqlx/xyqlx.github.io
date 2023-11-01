@@ -58,7 +58,8 @@ export const projects: Project[] = [
         description: {
             'en': "Show input method status and copy hint near the mouse cursor",
             'zh-CN': "在鼠标附近显示输入法中英状态和复制提示"
-        }
+        },
+        cover: "https://github.com/xyqlx/MouseHalo/raw/master/images/demo.gif"
     },
     {
         name: 'BilibiliJustListening',
@@ -68,7 +69,8 @@ export const projects: Project[] = [
         description: {
             'en': "Use Playwright to access Bilibili from the command line",
             'zh-CN': "在命令行中用Playwright访问哔哩哔哩"
-        }
+        },
+        cover: "https://github.com/xyqlx/BilibiliJustListening/raw/master/images/screenshot1.png"
     },
     {
         name: 'layer-anything',

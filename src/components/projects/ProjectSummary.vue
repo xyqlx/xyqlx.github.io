@@ -29,8 +29,16 @@ function navigate() {
         <span v-else>{{ tag['en'] }}</span>
       </el-tag>
     </div>
-    <div class="description" v-if="project?.description">
+    <div class="description" v-if="project.description">
       {{ (project.description as any)[locale] }}
+    </div>
+    <div class="cover">
+      <template v-if="project.cover">
+        <img :src="project.cover" alt="cover">
+      </template>
+      <template v-else>
+        <div class="void-image"></div>
+      </template>
     </div>
   </div>
 </template>
@@ -51,6 +59,34 @@ function navigate() {
 .name {
   font-size: 1.5rem;
   word-wrap: break-word;
+}
+.cover {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.cover > img {
+  width: fit-content;
+  max-height: 180px;
+  max-width: 100%;
+  
+}
+.cover > img, .void-image {
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%,  
+              100%, 0.075),
+              /* shadow ring 👇 */
+              0 0 0 1px hsla(0, 0%, 0%, 0.05),
+              /* multiple soft shadows 👇 */
+              0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
+              0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
+              0 3.5px 6px hsla(0, 0%, 0%, 0.09);
+}
+.void-image {
+  width: 100%;
+  height: 180px;
+  background-color: var(--color-border);
 }
 .tags {
   display: flex;
