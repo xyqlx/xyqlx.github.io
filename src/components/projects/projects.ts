@@ -16,6 +16,8 @@ export type Project = {
     demo?: string
 };
 
+import rainCover from './rain/rain-cover.gif';
+
 export const projects: Project[] = [
     {
         name: 'xyqlx-channel',
@@ -37,7 +39,8 @@ export const projects: Project[] = [
         description: {
             'en': "A simple example of raining effect simulation using WebGL",
             'zh-CN': "一个使用WebGL实现的2D雨中水波效果模拟"
-        }
+        },
+        cover: rainCover
     },
     {
         name: 'chocoberry',
