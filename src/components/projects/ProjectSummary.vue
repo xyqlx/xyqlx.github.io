@@ -18,7 +18,7 @@ function navigate() {
 </script>
 
 <template>
-  <div class="card" @click="navigate()">
+  <div :name="project.name" class="card" @click="navigate()">
     <div class="name">
       {{ project.name }}
     </div>

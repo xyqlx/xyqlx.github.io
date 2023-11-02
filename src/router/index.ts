@@ -28,7 +28,7 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     ...projectsRoutes
-  ],
+  ]
 })
 
 export default router

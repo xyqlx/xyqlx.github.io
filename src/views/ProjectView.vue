@@ -1,10 +1,42 @@
 <script setup lang="ts">
 import ProjectSummary from '@/components/projects/ProjectSummary.vue';
 import { projects } from '@/components/projects/projects';
+import debounce from 'lodash/debounce';
+import { onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter()
+const route = useRoute()
+
+const projectName = route.hash;
+let projectIndex = -1;
+if (projectName) {
+  projectIndex = projects.findIndex((p) => p.name === projectName.slice(1));
+}
+
+const onScroll = debounce(() => {
+  // get current top position
+  const cards = document.querySelectorAll('.card');
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
+    const rect = card.getBoundingClientRect();
+    // if card is in viewport, break
+    if (rect.top > 0 && rect.top < window.innerHeight) {
+      router.replace({ hash: '#' + projects[i].name });
+      break;
+    }
+  }
+}, 100);
+
+onMounted(() => {
+  if (projectIndex !== -1) {
+    const card = document.querySelectorAll('.card')[projectIndex];
+    card.scrollIntoView();
+  }
+});
 </script>
 
 <template>
-  <el-scrollbar height="calc(100vh - 160px)">
+  <el-scrollbar height="calc(100vh - 160px)" @scroll="onScroll">
     <div class="projects-container">
       <template v-for="project in projects" :key="project.name">
         <ProjectSummary :project="project" />
