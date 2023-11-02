@@ -16,6 +16,7 @@ declare module 'vue' {
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElImage: typeof import('element-plus/es')['ElImage']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
@@ -43,5 +44,8 @@ declare module 'vue' {
     UnderwaterFishSystem: typeof import('./src/components/projects/underwater-fish-system/UnderwaterFishSystem.vue')['default']
     VideoCell: typeof import('./src/components/projects/VideoCell.vue')['default']
     XyqlxChannel: typeof import('./src/components/projects/xyqlx-channel/XyqlxChannel.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import type { Project } from './projects';
-import { toRefs } from 'vue';
+import { toRefs, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps<{
@@ -15,6 +15,8 @@ const router = useRouter();
 function navigate() {
     router.push(`/project/${project.value.name}`);
 }
+
+const imageLoading = ref(project.value.cover ? true : false);
 </script>
 
 <template>
@@ -32,9 +34,11 @@ function navigate() {
     <div class="description" v-if="project.description">
       {{ (project.description as any)[locale] }}
     </div>
-    <div class="cover">
+    <div class="cover" :class="imageLoading ? 'loading' : ''"
+      v-loading="imageLoading" element-loading-background="rgba(123, 123, 123, 0.08)" element-loading-text="Loading...">
       <template v-if="project.cover">
-        <img :src="project.cover" alt="cover">
+        <el-image :src="project.cover" alt="cover" loading="lazy" @load="imageLoading = false" @error="imageLoading = false">
+        </el-image>
       </template>
       <template v-else>
         <div class="void-image"></div>
@@ -67,11 +71,13 @@ function navigate() {
   align-items: center;
   margin-top: 10px;
 }
+.cover.loading {
+  height: 180px;
+}
 .cover > img {
   width: fit-content;
   max-height: 180px;
   max-width: 100%;
-  
 }
 .cover > img, .void-image {
   box-shadow: inset 0 0 0.5px 1px hsla(0, 0%,  
