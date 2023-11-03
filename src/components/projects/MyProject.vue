@@ -34,35 +34,27 @@ const { t } = useI18n();
 </i18n>
 
 <template>
-  <div class="scrollbar-container" v-if="currentProject">
-    <el-scrollbar view-class="scrollbar" height="calc(100vh - 160px)">
-      <div class="project-container">
-        <div class="title-bar">
-          <h1>{{ currentProject.name }}</h1>
-          <div class="shortcuts">
-            <template v-for="(url, i) in shortcuts" :key="i">
-              <a class="tag-container" v-if="url" :href="url">
-                <el-tag class="tag" effect="plain" color="transparent">{{ tagNames[i] }}</el-tag>
-              </a>
-            </template>
-          </div>
-        </div>
-        <div>
-          <slot></slot>
-          <template v-if="!defaultSlot">
-            {{ t('under construction') }}
-          </template>
-        </div>
+  <div class="project-container" v-if="currentProject">
+    <div class="title-bar">
+      <h1>{{ currentProject.name }}</h1>
+      <div class="shortcuts">
+        <template v-for="(url, i) in shortcuts" :key="i">
+          <a class="tag-container" v-if="url" :href="url">
+            <el-tag class="tag" effect="plain" color="transparent">{{ tagNames[i] }}</el-tag>
+          </a>
+        </template>
       </div>
-    </el-scrollbar>
+    </div>
+    <div>
+      <slot></slot>
+      <template v-if="!defaultSlot">
+        {{ t('under construction') }}
+      </template>
+    </div>
   </div>
 </template>
 
 <style>
-.scrollbar-container {
-  width: 100%;
-}
-
 .scrollbar {
   display: flex;
   flex-direction: row;
@@ -104,4 +96,5 @@ a:hover {
   .project-container {
     width: 100%;
   }
-}</style>
+}
+</style>

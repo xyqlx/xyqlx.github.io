@@ -4,6 +4,9 @@ import { Sunrise, MoonNight } from '@element-plus/icons-vue';
 import { RouterLink, RouterView } from 'vue-router'
 import { useI18n } from 'vue-i18n';
 import { watch } from 'vue';
+import debounce from 'lodash/debounce';
+import { storeToRefs } from 'pinia';
+import { useDebounceScrollStore } from './stores/scroll';
 const isDarkMode = useDark();
 const { locale } = useI18n({
   useScope: 'global',
@@ -14,7 +17,10 @@ const isChinese = toRef(locale.value === 'zh-CN');
 watch(isChinese, (value) => {
   locale.value = value ? 'zh-CN' : 'en';
 });
-
+const { distance } = storeToRefs(useDebounceScrollStore());
+const onDebounceScroll = debounce((param: { scrollLeft: number, scrollTop: number }) => {
+  distance.value = param.scrollTop;
+}, 100);
 </script>
 
 <i18n>
@@ -46,9 +52,11 @@ watch(isChinese, (value) => {
         </div>
       </div>
     </el-header>
-    <el-main class="main">
-      <RouterView />
-    </el-main>
+    <el-scrollbar height="calc(100vh - 160px)" @scroll="onDebounceScroll">
+      <el-main class="main">
+        <RouterView />
+      </el-main>
+    </el-scrollbar>
     <el-footer class="footer">
       <div class="copyright">
         ©2023 xyqlx

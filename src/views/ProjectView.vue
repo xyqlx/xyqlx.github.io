@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import ProjectSummary from '@/components/projects/ProjectSummary.vue';
 import { projects } from '@/components/projects/projects';
-import debounce from 'lodash/debounce';
-import { onMounted } from 'vue';
+import { useDebounceScrollStore } from '@/stores/scroll';
+import { storeToRefs } from 'pinia';
+import { onMounted, onUnmounted, watch, ref, type Ref, type WatchStopHandle } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 const router = useRouter()
 const route = useRoute()
@@ -13,7 +14,9 @@ if (projectName) {
   projectIndex = projects.findIndex((p) => p.name === projectName.slice(1));
 }
 
-const onScroll = debounce(() => {
+const { distance } = storeToRefs(useDebounceScrollStore());
+
+const onScroll = () => {
   // get current top position
   const cards = document.querySelectorAll('.card');
   for (let i = 0; i < cards.length; i++) {
@@ -25,24 +28,28 @@ const onScroll = debounce(() => {
       break;
     }
   }
-}, 100);
+};
+
+const watchScroll: Ref<WatchStopHandle | undefined> = ref(undefined);
 
 onMounted(() => {
   if (projectIndex !== -1) {
     const card = document.querySelectorAll('.card')[projectIndex];
     card.scrollIntoView();
   }
+  watchScroll.value = watch(distance, onScroll);
+});
+onUnmounted(() => {
+  watchScroll.value?.();
 });
 </script>
 
 <template>
-  <el-scrollbar height="calc(100vh - 160px)" @scroll="onScroll">
-    <div class="projects-container">
-      <template v-for="project in projects" :key="project.name">
-        <ProjectSummary :project="project" />
-      </template>
-    </div>
-  </el-scrollbar>
+  <div class="projects-container">
+    <template v-for="project in projects" :key="project.name">
+      <ProjectSummary :project="project" />
+    </template>
+  </div>
 </template>
 
 <style>

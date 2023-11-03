@@ -46,11 +46,17 @@ const iframeStyle = computed(() => {
 </script>
 
 <template>
-  <iframe :src="src" frameborder="0" @load="onIFrameLoad($event)"
+  <div class="iframe-container">
+    <iframe :src="src" frameborder="0" @load="onIFrameLoad($event)"
     :style="iframeStyle"></iframe>
+  </div>
 </template>
 
 <style>
+.iframe-container {
+  width: 100%;
+  overflow: hidden;
+}
 iframe {
   border: none;
 }
