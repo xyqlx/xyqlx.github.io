@@ -5,7 +5,7 @@
   <h1>This is home page</h1>
 </template>
 
-<style>
+<style scoped>
 @media (min-width: 1024px) {
 }
 </style>

@@ -52,7 +52,7 @@ onUnmounted(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .projects-container {
   display: flex;
   flex-wrap: wrap;

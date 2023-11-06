@@ -52,7 +52,7 @@ const iframeStyle = computed(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .iframe-container {
   width: 100%;
   overflow: hidden;

@@ -12,7 +12,7 @@ const { src } = toRefs(props);
   <video :src="src" controls autoplay loop muted></video>
 </template>
 
-<style>
+<style scoped>
 .video-cell {
   display: flex;
   justify-content: center;

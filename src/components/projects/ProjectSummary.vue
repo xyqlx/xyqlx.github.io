@@ -47,7 +47,7 @@ const imageLoading = ref(project.value.cover ? true : false);
   </div>
 </template>
 
-<style>
+<style scoped>
 .card {
   border-style: solid;
   border-color: var(--color-border);
@@ -102,6 +102,9 @@ const imageLoading = ref(project.value.cover ? true : false);
 }
 .tag {
   color: var(--color-text);
+}
+.dark .tag {
+  --el-tag-border-color: var(--el-color-primary);
 }
 .description {
   margin-top: 10px;

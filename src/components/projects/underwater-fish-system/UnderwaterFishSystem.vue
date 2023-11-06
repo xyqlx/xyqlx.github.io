@@ -7,5 +7,5 @@ import MyProject from '../MyProject.vue';
   </MyProject>
 </template>
 
-<style>
+<style scoped>
 </style>

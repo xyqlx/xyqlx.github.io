@@ -49,44 +49,44 @@ onMounted(() => {
   <div v-html="html"></div>
 </template>
 
-<style>
-h1 {
+<style scoped>
+:deep(h1) {
   font-size: 2rem;
 }
-h2 {
+:deep(h2) {
   font-size: 1.5rem;
   padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--color-border);
 }
-h3 {
+:deep(h3) {
   font-size: 1.2rem;
 }
-h1, h2, h3, h4, h5, h6 {
+:deep(h1), :deep(h2), :deep(h3), :deep(h4), :deep(h5), :deep(h6) {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
 }
-table, th, td {
+:deep(table), :deep(th), :deep(td) {
   border: 1px solid var(--color-border);
   border-collapse: collapse;
   padding: 0.2rem 0.5rem;
 }
-ul, p {
+:deep(ul), :deep(p) {
   font-size: 1rem;
   margin-top: 0;
   margin-bottom: 0.8rem;
 }
-table {
+:deep(table) {
   margin-top: 0;
   margin-bottom: 0.8rem;
 }
-img {
+:deep(img) {
   max-width: 100%;
 }
-p:has(img) {
+:deep(p:has(img)) {
   text-align: center;
 }
-pre {
+:deep(pre) {
   white-space: pre-wrap;
 }
 </style>

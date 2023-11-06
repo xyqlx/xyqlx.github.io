@@ -11,5 +11,5 @@ import MarkdownCell from '../MarkdownCell.vue';
   </MyProject>
 </template>
 
-<style>
+<style scoped>
 </style>

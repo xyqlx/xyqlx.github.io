@@ -15,5 +15,5 @@ const urls = {
   </MyProject>
 </template>
 
-<style>
+<style scoped>
 </style>

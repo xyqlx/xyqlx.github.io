@@ -54,7 +54,7 @@ const { t } = useI18n();
   </div>
 </template>
 
-<style>
+<style scoped>
 .scrollbar {
   display: flex;
   flex-direction: row;
