@@ -44,4 +44,4 @@ Windows可用的简单计时器
 
 ## 字体
 
-请手动现在安装 digital-7 (mono) 字体
+请手动安装 digital-7 (mono) 字体
