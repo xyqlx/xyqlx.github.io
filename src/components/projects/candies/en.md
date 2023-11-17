@@ -54,9 +54,23 @@ Although Candies is a relatively unsuccessful work, in a positive sense, it has 
 * Viewing, Adding, Editing, and Modifying Activities
 * Tag Notes
 
+### About Note Synchronization
+
+Since it is a practical tool, there is a need for multi-device usage. For small-scale projects, the simplest solution is to use a cloud server/cloud database to store data. Since this project is developed for personal use, cloud storage is also a convenient option. The initial version used Google Drive as the data storage, but later switched to OneDrive. The advantage of OneDrive is that it can directly read and write data from the file system without the need to manually handle device offline issues.
+
+As a note-taking tool that supports offline operations, certain measures need to be taken to ensure the consistency of data across different devices. Currently, the approach taken by Candies when there are data updates is roughly as follows:
+
+1. Update the local MongoDB note database.
+2. Add the data update as an operation record to the local MongoDB operation record database.
+3. At regular intervals or manually triggered, perform a "synchronization" by exporting all operation records as data files and clearing them, then upload them to the device-specific folder on the cloud storage.
+4. The "synchronization" process will also retrieve the latest unimported operation records from other devices on the cloud storage, read them, and update the local MongoDB note database.
+5. After the "synchronization" is completed, update the timestamp of the latest operation record for each device.
+
+Some early designs for synchronization had issues such as missing data and old operations overwriting new operations. This approach has been running stable for a year and a half at the time of writing this section, and no significant errors have been encountered so far.
+
 ### Version Name
 
-The UI has been updated, but unfortunately, the interface of the first version of Candies was not preserved. The current version is named "Transparent Hairpin" and matches the interface style.
+The UI has been updated, but unfortunately, the interface image of the first version of Candies was not preserved. The current version is named "Transparent Hairpin" and matches the interface style.
 
 The previous version was named "Strawberry Cake".
 
