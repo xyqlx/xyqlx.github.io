@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { projects } from '@/components/projects/projects'
+import { useDebounceScrollStore } from '@/stores/scroll';
+import { storeToRefs } from 'pinia';
 
 const projectsRoutes = projects.map(p => ({
   'path': '/project/' + p.name,
@@ -29,6 +31,12 @@ const router = createRouter({
     },
     ...projectsRoutes
   ]
+})
+
+router.afterEach((to, from) => {
+  const { route } = storeToRefs(useDebounceScrollStore());
+  if(to.name === from.name) return;
+  route.value = to.name?.toString() || '';
 })
 
 export default router

@@ -55,14 +55,11 @@ const { t } = useI18n();
 </template>
 
 <style scoped>
-.scrollbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
 .project-container {
-  width: 60%;
+  width: 65%;
+  background: color-mix(in srgb, var(--color-background) 80%, transparent);
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .title-bar {
@@ -74,6 +71,12 @@ const { t } = useI18n();
 .shortcuts {
   margin-top: 0.5rem;
   margin-left: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 a:hover {

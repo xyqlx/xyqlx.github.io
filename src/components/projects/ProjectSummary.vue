@@ -56,9 +56,19 @@ const imageLoading = ref(project.value.cover ? true : false);
   width: calc(20vw - 20px);
   padding: 10px;
   cursor: pointer;
+  background-color: var(--color-background);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.dark .card {
+  box-shadow: rgba(25, 25, 46, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.dark .card:hover {
+  border-color: var(--color-text);
+  box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
 }
 .card:hover {
-  border-color: var(--color-text);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 .name {
   font-size: 1.5rem;

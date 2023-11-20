@@ -37,7 +37,11 @@ onMounted(() => {
     const card = document.querySelectorAll('.card')[projectIndex];
     card.scrollIntoView();
   }
-  watchScroll.value = watch(distance, onScroll);
+  watchScroll.value = watch(distance, (val, oldValue)=>{
+    if(Math.abs(val - oldValue) > 1){
+      onScroll();
+    }
+  });
 });
 onUnmounted(() => {
   watchScroll.value?.();
@@ -45,6 +49,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <!-- TODO If is in the middle of the page, a prompt message should be displayed indicating that there are still items on it -->
   <div class="projects-container">
     <template v-for="project in projects" :key="project.name">
       <ProjectSummary :project="project" />

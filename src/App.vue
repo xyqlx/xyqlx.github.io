@@ -3,9 +3,10 @@ import { toRef, useDark } from '@vueuse/core';
 import { Sunrise, MoonNight } from '@element-plus/icons-vue';
 import { RouterLink, RouterView } from 'vue-router'
 import { useI18n } from 'vue-i18n';
-import { watch } from 'vue';
+import { watch, ref, onMounted, onUnmounted, type WatchStopHandle } from 'vue';
 import debounce from 'lodash/debounce';
 import { storeToRefs } from 'pinia';
+import { useRoute } from 'vue-router';
 import { useDebounceScrollStore } from './stores/scroll';
 const isDarkMode = useDark();
 const { locale } = useI18n({
@@ -17,10 +18,23 @@ const isChinese = toRef(locale.value === 'zh-CN');
 watch(isChinese, (value) => {
   locale.value = value ? 'zh-CN' : 'en';
 });
-const { distance } = storeToRefs(useDebounceScrollStore());
+const { distance, route } = storeToRefs(useDebounceScrollStore());
+const { hash } = useRoute();
 const onDebounceScroll = debounce((param: { scrollLeft: number, scrollTop: number }) => {
   distance.value = param.scrollTop;
 }, 100);
+const scrollbar = ref();
+let watcher: WatchStopHandle | undefined = undefined;
+onMounted(() => {
+  watcher = watch(route, () => {
+    if(hash === ''){
+      scrollbar.value?.scrollTo({ top: 0 });
+    }
+  });
+});
+onUnmounted(() => {
+  watcher?.();
+});
 </script>
 
 <i18n>
@@ -52,23 +66,31 @@ const onDebounceScroll = debounce((param: { scrollLeft: number, scrollTop: numbe
         </div>
       </div>
     </el-header>
-    <el-scrollbar height="calc(100vh - 160px)" @scroll="onDebounceScroll">
+    <el-scrollbar height="100%" @scroll="onDebounceScroll" ref="scrollbar">
       <el-main class="main">
         <RouterView />
       </el-main>
+      <el-footer class="footer">
+        <div class="copyright">
+          ©2023 xyqlx
+          <a class="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
+        </div>
+      </el-footer>
     </el-scrollbar>
-    <el-footer class="footer">
-      <div class="copyright">
-        ©2023 xyqlx
-        <a class="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
-      </div>
-    </el-footer>
+
   </el-container>
 </template>
 
 <style scoped>
 .container {
   height: 100vh;
+  background:
+    linear-gradient(45deg, var(--color-background-soft) 25%, transparent 25%) 0 0,
+    linear-gradient(135deg, transparent 75%, var(--color-background-soft) 75%) 0 0,
+    linear-gradient(45deg, transparent 75%, var(--color-background-soft) 75%) 0 0,
+    linear-gradient(135deg, var(--color-background-soft) 25%, transparent 25%) 0 0,
+    var(--color-background);
+  background-size: 20px 20px;
 }
 
 .functions {
