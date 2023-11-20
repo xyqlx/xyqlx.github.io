@@ -60,6 +60,7 @@ const { t } = useI18n();
   background: color-mix(in srgb, var(--color-background) 80%, transparent);
   padding-left: 2rem;
   padding-right: 2rem;
+  padding-bottom: 3rem;
 }
 
 .title-bar {
