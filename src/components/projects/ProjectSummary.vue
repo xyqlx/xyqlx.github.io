@@ -59,6 +59,8 @@ const imageLoading = ref(project.value.cover ? true : false);
   background-color: var(--color-background);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   transition: box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
 }
 .dark .card {
   box-shadow: rgba(25, 25, 46, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -75,6 +77,7 @@ const imageLoading = ref(project.value.cover ? true : false);
   word-wrap: break-word;
 }
 .cover {
+  flex: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
