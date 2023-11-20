@@ -17,6 +17,11 @@ export type Project = {
 };
 
 import rainCover from './rain/rain-cover.gif';
+import chocoberryCover from './chocoberry/chocoberry-cover.png';
+import excelColumnSplitterCover from './excel-column-splitter/cover.png';
+import candiesCover from './candies/cover.png';
+import geneticAlgorithmFunctionCover from './genetic-algorithm-function/cover.png';
+import TSPAPPCover from './tsp-app/cover.png';
 
 export const projects: Project[] = [
     {
@@ -51,7 +56,8 @@ export const projects: Project[] = [
         description: {
             'en': "GPU server monitoring system",
             'zh-CN': "GPU服务器监控系统"
-        }
+        },
+        cover: chocoberryCover
     },
     {
         name: 'MouseHalo',
@@ -111,7 +117,8 @@ export const projects: Project[] = [
         description: {
             'en': "Excel Add-in for Splitting and Stacking Data",
             'zh-CN': "帮助分列与分行的Excel插件"
-        }
+        },
+        cover: excelColumnSplitterCover
     },
     {
         name: 'python-tutorial',
@@ -140,7 +147,8 @@ export const projects: Project[] = [
         description: {
             'en': "Personal recording tool",
             'zh-CN': "xyqlx的个人记录工具"
-        }
+        },
+        cover: candiesCover
     },
     {
         name: 'Cocoa',
@@ -169,7 +177,8 @@ export const projects: Project[] = [
         description: {
             'en': "Simple timers available for Windows",
             'zh-CN': "Windows可用的简单计时器"
-        }
+        },
+        cover: 'https://github.com/xyqlx/ChocolaTimer/raw/master/Image/active_new.png'
     },
     {
         name: 'asoul-cursors',
@@ -179,7 +188,8 @@ export const projects: Project[] = [
         description: {
             'en': "A Chrome extension for custom mouse cursors",
             'zh-CN': "根据网页地址切换鼠标指针的Chrome扩展"
-        }
+        },
+        cover: 'https://github.com/xyqlx/asoul-cursors/raw/master/README/banner_5.gif'
     },
     {
         name: 'pcode-viewer',
@@ -206,11 +216,13 @@ export const projects: Project[] = [
         component: () => import('./tsp-app/TSPAPP.vue'),
         tags: ['Angular', {'en': 'Genetic Algorithm', 'zh-CN': '遗传算法' }],
         gitee: "https://gitee.com/xyqlx/tsp_app",
-        demo: "http://xyqlx.gitee.io/tsp_view/",
+        github: "https://github.com/xyqlx/tsp_view",
+        demo: "http://xyqlx.github.io/tsp_view/",
         description: {
             'en': "Visualization of several solutions to TSP problems",
             'zh-CN': "TSP问题的几种解法可视化"
-        }
+        },
+        cover: TSPAPPCover
     },
     {
         name: 'genetic_algorithm_function',
@@ -221,7 +233,8 @@ export const projects: Project[] = [
         description: {
             'en': 'Genetic algorithm for solving the maximum value of a function',
             'zh-CN': '遗传算法求解函数最大值'
-        }
+        },
+        cover: geneticAlgorithmFunctionCover
     },
     {
         name: 'OneNoteTagGUI',
