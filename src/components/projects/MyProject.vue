@@ -33,6 +33,13 @@ onMounted(() => {
       }
     }
   });
+  // get markdown toc
+  if(defaultSlot) {
+    const slots = defaultSlot().filter((slot) => ((slot.type as any)?.__name ?? '') === 'MarkdownCell');
+    slots.forEach((slot) => {
+      console.log(slot);
+    });
+  }
 });
 onUnmounted(() => {
   watcher?.();

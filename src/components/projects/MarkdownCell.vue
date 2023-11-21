@@ -4,13 +4,18 @@ import { onMounted, ref, toRefs, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import MarkdownItAnchor from 'markdown-it-anchor';
+import MarkdownItTocDoneRight from 'markdown-it-toc-done-right';
 
 const props = defineProps<{
   en: string;
   zh: string;
   urls?: {
     [key: string]: string;
-  }
+  };
+  
+}>();
+const emit = defineEmits<{
+  (e: 'updateToc', toc: string): void
 }>();
 const route = useRoute();
 const { en, zh, urls } = toRefs(props);
@@ -21,7 +26,11 @@ md.use(MarkdownItAnchor, {
     return `#${route.path}#${slug}`;
   },
 });
-
+md.use(MarkdownItTocDoneRight, {
+  callback: (html: string) => {
+    emit('updateToc', html);
+  },
+});
 const { locale } = useI18n();
 const html = ref('');
 function replaceUrls(tokens: any[], urls: { [key: string]: string }) {
