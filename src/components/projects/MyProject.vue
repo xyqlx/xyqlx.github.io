@@ -145,7 +145,7 @@ onUnmounted(() => {
 }
 
 /* deep (ol may be cloned) */
-.toc-container >>> ol {
+.toc-container :deep(ol) {
   padding-left: 1rem;
   margin-top: 0;
   margin-bottom: 0;
