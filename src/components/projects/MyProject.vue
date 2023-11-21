@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { toRefs, useSlots } from 'vue';
+import { toRefs, useSlots, onMounted, onUnmounted, type WatchStopHandle, watch } from 'vue';
 import { getProject } from './projects';
 import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 
 const props = defineProps<{
   project: string;
@@ -20,6 +21,22 @@ const tagNames = [
 ];
 const defaultSlot = useSlots().default
 const { t } = useI18n();
+const route = useRoute();
+let watcher: WatchStopHandle | undefined = undefined;
+onMounted(() => {
+  watcher = watch(() => route.hash, () => {
+    if (route.hash !== '') {
+      const id = encodeURIComponent(route.hash.slice(1));
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  });
+});
+onUnmounted(() => {
+  watcher?.();
+});
 </script>
 
 <i18n>

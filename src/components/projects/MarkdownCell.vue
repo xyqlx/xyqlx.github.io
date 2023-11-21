@@ -2,6 +2,8 @@
 import MarkdownIt from 'markdown-it';
 import { onMounted, ref, toRefs, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
+import MarkdownItAnchor from 'markdown-it-anchor';
 
 const props = defineProps<{
   en: string;
@@ -10,8 +12,16 @@ const props = defineProps<{
     [key: string]: string;
   }
 }>();
+const route = useRoute();
 const { en, zh, urls } = toRefs(props);
 const md = new MarkdownIt();
+md.use(MarkdownItAnchor, { 
+  permalink: true,
+  permalinkHref: (slug: string) => {
+    return `#${route.path}#${slug}`;
+  },
+});
+
 const { locale } = useI18n();
 const html = ref('');
 function replaceUrls(tokens: any[], urls: { [key: string]: string }) {

@@ -15,6 +15,8 @@
     "@vueuse/core": "^10.4.1",
     "element-plus": "^2.3.14",
     "markdown-it": "^13.0.2",
+    "markdown-it-anchor": "^8.6.7",
+    "markdown-it-toc-done-right": "^4.2.0",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
     "vue-i18n": "^9.5.0",
