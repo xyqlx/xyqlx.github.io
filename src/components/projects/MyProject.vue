@@ -3,6 +3,9 @@ import { toRefs, useSlots, onMounted, onUnmounted, type WatchStopHandle, watch }
 import { getProject } from './projects';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
+import { watchDebounced } from '@vueuse/core';
+import { storeToRefs } from 'pinia';
+import { useMarkdownStore } from '@/stores/markdown';
 
 const props = defineProps<{
   project: string;
@@ -22,7 +25,36 @@ const tagNames = [
 const defaultSlot = useSlots().default
 const { t } = useI18n();
 const route = useRoute();
+const { tocUpdate } = storeToRefs(useMarkdownStore());
 let watcher: WatchStopHandle | undefined = undefined;
+let tocWatcher: WatchStopHandle | undefined = undefined;
+function updateToc() {
+  const tocs = document.getElementsByClassName('table-of-contents');
+  console.log(tocs);
+  const parent = document.querySelector('.toc-container nav ol');
+  // clear parent
+  while (parent?.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+  for (let i = 0; i < tocs.length; i++) {
+    const toc = tocs[i];
+    // get nav ol
+    const ol = toc.querySelector('ol');
+    // copy all children
+    ol!.childNodes.forEach((node) => {
+      parent!.appendChild(node.cloneNode(true));
+    });
+  }
+  // replace all href with route path
+  const links = parent!.querySelectorAll('a');
+  for (let i = 0; i < links.length; i++) {
+    const link = links[i];
+    const href = link.getAttribute('href');
+    if (href) {
+      link.setAttribute('href', `#${route.path}${href}`);
+    }
+  }
+}
 onMounted(() => {
   watcher = watch(() => route.hash, () => {
     if (route.hash !== '') {
@@ -33,16 +65,18 @@ onMounted(() => {
       }
     }
   });
-  // get markdown toc
-  if(defaultSlot) {
-    const slots = defaultSlot().filter((slot) => ((slot.type as any)?.__name ?? '') === 'MarkdownCell');
-    slots.forEach((slot) => {
-      console.log(slot);
-    });
-  }
-});
+  tocWatcher = watchDebounced(tocUpdate, () => {
+    updateToc();
+  },
+    {
+      debounce: 40,
+      maxWait: 200
+    }
+  );
+})
 onUnmounted(() => {
   watcher?.();
+  tocWatcher?.();
 });
 </script>
 
@@ -58,29 +92,67 @@ onUnmounted(() => {
 </i18n>
 
 <template>
-  <div class="project-container" v-if="currentProject">
-    <div class="title-bar">
-      <h1>{{ currentProject.name }}</h1>
-      <div class="shortcuts">
-        <template v-for="(url, i) in shortcuts" :key="i">
-          <a class="tag-container" v-if="url" :href="url">
-            <el-tag class="tag" effect="plain" color="transparent">{{ tagNames[i] }}</el-tag>
-          </a>
+  <div v-if="currentProject" class="project-container">
+    <div class="toc-container">
+      <nav>
+        <ol></ol>
+      </nav>
+    </div>
+    <div class="article-container">
+      <div class="title-bar">
+        <h1>{{ currentProject.name }}</h1>
+        <div class="shortcuts">
+          <template v-for="(url, i) in shortcuts" :key="i">
+            <a class="tag-container" v-if="url" :href="url">
+              <el-tag class="tag" effect="plain" color="transparent">{{ tagNames[i] }}</el-tag>
+            </a>
+          </template>
+        </div>
+      </div>
+      <div>
+        <slot></slot>
+        <template v-if="!defaultSlot">
+          {{ t('under construction') }}
         </template>
       </div>
-    </div>
-    <div>
-      <slot></slot>
-      <template v-if="!defaultSlot">
-        {{ t('under construction') }}
-      </template>
     </div>
   </div>
 </template>
 
 <style scoped>
 .project-container {
-  width: 65%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.toc-container {
+  width: 18%;
+}
+
+.toc-container>nav {
+  position: absolute;
+  background: color-mix(in srgb, var(--color-background) 80%, transparent);
+  border-color: transparent;
+  border-radius: 3px;
+  border-style: solid;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  left: var(--el-main-padding);
+  width: calc(18% - 12px);
+}
+
+/* deep (ol may be cloned) */
+.toc-container >>> ol {
+  padding-left: 1rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.article-container {
+  width: 64%;
   background: color-mix(in srgb, var(--color-background) 80%, transparent);
   padding-left: 2rem;
   padding-right: 2rem;
@@ -122,7 +194,18 @@ a:hover {
 
 @media (max-width: 1024px) {
   .project-container {
+    flex-direction: column;
+  }
+
+  .article-container {
     width: 100%;
   }
-}
-</style>
+
+  .toc-container {
+    display: none;
+  }
+
+  .toc-container nav {
+    display: none;
+  }
+}</style>
