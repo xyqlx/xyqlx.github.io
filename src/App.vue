@@ -14,9 +14,14 @@ const { locale } = useI18n({
   inheritLocale: true,
 });
 const { t } = useI18n();
+function updateHtmlLang() {
+  document.getElementsByTagName('html')[0].setAttribute('lang', locale.value ? 'zh-cmn' : 'en');
+}
 const isChinese = toRef(locale.value === 'zh-CN');
+updateHtmlLang();
 watch(isChinese, (value) => {
   locale.value = value ? 'zh-CN' : 'en';
+  updateHtmlLang();
 });
 const { distance, route } = storeToRefs(useDebounceScrollStore());
 const { hash } = useRoute();
