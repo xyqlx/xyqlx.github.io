@@ -1,1 +1,0 @@
-import{_ as o}from"./MyProject-cc9d09ef.js";import{d as e,o as t,g as p}from"./index-477279a9.js";import"./tag-4d8e78b5.js";const m=e({__name:"TSPAPP",setup(r){return(a,_)=>(t(),p(o,{project:"tsp_app"}))}});export{m as default};
