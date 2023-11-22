@@ -196,6 +196,7 @@ export const projects: Project[] = [
         component: () => import('./pcode-viewer/PCodeViewer.vue'),
         tags: ['Angular', {'en': 'Compilation Principles', 'zh-CN': '编译原理'}, 'ANTLR'],
         gitee: "https://gitee.com/xyqlx/pcode-viewer",
+        demo: " https://xyqlx.gitee.io/pcode-viewer",
         description: {
             'en': "Online Interpreter for P-code Languages",
             'zh-CN': "类P-code语言在线解释器"
@@ -206,6 +207,7 @@ export const projects: Project[] = [
         component: () => import('./pl00-webide/PL00WebIDE.vue'),
         tags: ['Angular', {'en': 'Compilation Principles', 'zh-CN': '编译原理'}, 'ANTLR'],
         gitee: "https://gitee.com/xyqlx/PL00WebIDE",
+        demo: "https://xyqlx.gitee.io/pl00-editor-view/",
         description: {
             'en': "Online IDE for extended PL/0 language",
             'zh-CN': "扩展的PL/0语言的在线IDE"
