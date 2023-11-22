@@ -94,9 +94,11 @@ onUnmounted(() => {
 <template>
   <div v-if="currentProject" class="project-container">
     <div class="toc-container">
-      <nav>
-        <ol></ol>
-      </nav>
+      <el-scrollbar height="90%">
+        <nav>
+          <ol></ol>
+        </nav>
+      </el-scrollbar>
     </div>
     <div class="article-container">
       <div class="title-bar">
@@ -127,11 +129,12 @@ onUnmounted(() => {
 }
 
 .toc-container {
+  position: absolute;
   width: 18%;
+  height: 100%;
 }
 
-.toc-container>nav {
-  position: absolute;
+.toc-container nav {
   background: color-mix(in srgb, var(--color-background) 80%, transparent);
   border-color: transparent;
   border-radius: 3px;
@@ -141,7 +144,6 @@ onUnmounted(() => {
   padding-top: 1rem;
   padding-bottom: 1rem;
   left: var(--el-main-padding);
-  width: calc(18% - 12px);
 }
 
 /* deep (ol may be cloned) */
@@ -153,6 +155,7 @@ onUnmounted(() => {
 
 .article-container {
   width: 64%;
+  margin-left: calc(18% + 12px);
   background: color-mix(in srgb, var(--color-background) 80%, transparent);
   padding-left: 2rem;
   padding-right: 2rem;
