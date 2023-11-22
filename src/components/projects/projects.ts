@@ -50,7 +50,7 @@ export const projects: Project[] = [
     {
         name: 'chocoberry',
         component: () => import('./chocoberry/ChocoberryVue.vue'),
-        tags: ['Angular', 'NestJS'],
+        tags: ['Angular', 'NestJS', 'lowdb'],
         github: "https://github.com/xyqlx/chocoberry-ng",
         demo: "https://xyqlx.github.io/chocoberry-ng",
         description: {
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     {
         name: 'layer-anything',
         component: () => import('./layer-anything/LayerAnything.vue'),
-        tags: ['Segment Anything', {'en': 'Machine Learning', 'zh-CN': '机器学习'}, 'Vue'],
+        tags: ['Segment Anything', {'en': 'Machine Learning', 'zh-CN': '机器学习'}, 'Vue', 'FastAPI'],
         description: {
             'en': "Layer anything with a single click",
             'zh-CN': "图片自动分层"
@@ -112,7 +112,7 @@ export const projects: Project[] = [
     {
         name: 'ExcelColumnSplitter',
         component: () => import('./excel-column-splitter/ExcelColumnSplitter.vue'),
-        tags: ['Excel', 'Office', '.NET', 'VSTO'],
+        tags: ['Excel', 'Office', '.NET', 'VSTO', 'WinForm'],
         gitee: "https://gitee.com/xyqlx/excel-column-splitter",
         description: {
             'en': "Excel Add-in for Splitting and Stacking Data",
@@ -123,7 +123,7 @@ export const projects: Project[] = [
     {
         name: 'python-tutorial',
         component: () => import('./python-tutorial/PythonTutorial.vue'),
-        tags: ['Python'],
+        tags: ['Angular', 'Pyodide', 'Dexie'],
         gitee: "https://gitee.com/xyqlx/python-tutorial",
         description: {
             'en': "Web version of a runnable Python tutorial",
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     {
         name: 'candies',
         component: () => import('./candies/CandiesVue.vue'),
-        tags: ['Angular'],
+        tags: ['Angular', 'MongoDB', '.NET', 'ASP.NET'],
         description: {
             'en': "Personal recording tool",
             'zh-CN': "xyqlx的个人记录工具"
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     {
         name: 'Cocoa',
         component: () => import('./cocoa/CocoaVue.vue'),
-        tags: ['.NET'],
+        tags: ['.NET', 'WPF', 'MongoDB', 'ASP.NET'],
         description: {
             'en': "Personal Windows utility portal",
             'zh-CN': "个人的Windows实用工具入口"
@@ -214,7 +214,7 @@ export const projects: Project[] = [
     {
         name: 'tsp_app',
         component: () => import('./tsp-app/TSPAPP.vue'),
-        tags: ['Angular', {'en': 'Genetic Algorithm', 'zh-CN': '遗传算法' }],
+        tags: ['Vue', {'en': 'Genetic Algorithm', 'zh-CN': '遗传算法' }],
         gitee: "https://gitee.com/xyqlx/tsp_app",
         github: "https://github.com/xyqlx/tsp_view",
         demo: "http://xyqlx.github.io/tsp_view/",
@@ -227,7 +227,7 @@ export const projects: Project[] = [
     {
         name: 'genetic_algorithm_function',
         component: () => import('./genetic-algorithm-function/GeneticAlgorithmFunction.vue'),
-        tags: ['Angular', {'en': 'Genetic Algorithm', 'zh-CN': '遗传算法' }],
+        tags: ['Vue', {'en': 'Genetic Algorithm', 'zh-CN': '遗传算法' }],
         gitee: "https://gitee.com/xyqlx/genetic_algorithm_function",
         demo: "https://xyqlx.gitee.io/genetic_algorithm_function/",
         description: {
