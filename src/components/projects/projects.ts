@@ -1,6 +1,6 @@
 import type { RouteComponent } from "vue-router";
 
-type localeText = {
+export type localeText = {
     'en': string,
     'zh-CN': string,
 }

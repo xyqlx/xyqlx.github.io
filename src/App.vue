@@ -47,11 +47,13 @@ onUnmounted(() => {
     "en": {
       "home": "Home",
       "project": "Project",
-      "about": "About"
+      "tag": "Tag",
+      "about": "About",
     },
     "zh-CN": {
       "home": "首页",
       "project": "项目",
+      "tag": "标签",
       "about": "关于"
     }
   }
@@ -63,6 +65,7 @@ onUnmounted(() => {
       <div class="wrapper">
         <nav>
           <RouterLink to="/project">{{ t('project') }}</RouterLink>
+          <RouterLink to="/tag">{{ t('tag') }}</RouterLink>
           <RouterLink to="/about">{{ t('about') }}</RouterLink>
         </nav>
         <div class="functions">
