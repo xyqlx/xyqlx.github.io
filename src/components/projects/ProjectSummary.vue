@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
-import type { Project } from './projects';
+import { type localeText, type Project } from './projects';
 import { toRefs, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -25,7 +25,8 @@ const imageLoading = ref(project.value.cover ? true : false);
       {{ project.name }}
     </div>
     <div class="tags">
-      <router-link v-for="tag in project.tags" :key="tag.toString()" :to="'/project?tag=' + tag" @click.stop=";">
+      <router-link v-for="tag in project.tags" :key="tag.toString()"
+        :to="'/project?tag=' + (typeof tag === 'string' ? tag : (tag as localeText)['en'])" @click.stop=";">
         <el-tag class="tag" effect="plain" color="transparent">
           <span v-if="typeof tag === 'string'">{{ tag }}</span>
           <span v-else-if="locale in (tag as any)">{{ (tag as any)[locale] }}</span>

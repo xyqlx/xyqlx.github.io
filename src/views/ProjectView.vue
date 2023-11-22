@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import ProjectSummary from '@/components/projects/ProjectSummary.vue';
-import { projects } from '@/components/projects/projects';
+import { projects, type localeText } from '@/components/projects/projects';
 import { useDebounceScrollStore } from '@/stores/scroll';
 import { storeToRefs } from 'pinia';
 import { onMounted, onUnmounted, watch, ref, type Ref, type WatchStopHandle } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter, useRoute, type LocationQueryValue } from 'vue-router';
 const router = useRouter()
 const route = useRoute()
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const projectName = route.hash;
 let projectIndex = -1;
@@ -18,14 +18,42 @@ if (projectName) {
 
 let filteredProjects = projects;
 let tagFilter = route.query.tag;
+const localeMapTag: Map<string, localeText> = new Map();
+for (const project of projects) {
+  for (const tag of project.tags) {
+    if (typeof tag !== 'string') {
+      localeMapTag.set(tag['en'], tag);
+    }
+  }
+}
 
-watch(() => route.query.tag, (tag) => {
+function updateFilteredProjects(tag: LocationQueryValue | LocationQueryValue[]) {
   tagFilter = tag;
   if (tag) {
-    filteredProjects = filteredProjects.filter((p) => p.tags.includes(tag as string));
+    filteredProjects = filteredProjects.filter((p) => {
+      for (const t of p.tags) {
+        if (typeof t === 'string') {
+          if (t === tag) {
+            return true;
+          }
+        }
+        else {
+          if ('en' in t && t.en === tag) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
   } else {
     filteredProjects = projects;
   }
+}
+
+updateFilteredProjects(tagFilter);
+
+watch(() => route.query.tag, (tag) => {
+  updateFilteredProjects(tag);
 });
 
 function clearFilterTag() {
@@ -42,7 +70,9 @@ const onScroll = () => {
     const rect = card.getBoundingClientRect();
     // if card is in viewport, break
     if (rect.top > 0 && rect.top < window.innerHeight) {
-      router.replace({ hash: '#' + projects[i].name });
+      if (!tagFilter){
+        router.replace({ hash: '#' + projects[i].name });
+      }
       break;
     }
   }
@@ -83,7 +113,8 @@ onUnmounted(() => {
       <div>
         <span>{{ t('tagFilter') }}</span>
         <el-tag :key="tagFilter" closable color="transparent" @close="clearFilterTag">
-          {{ tagFilter }}
+          {{ localeMapTag.has(tagFilter as string) ? (localeMapTag.get(tagFilter as string)! as any)[locale] : tagFilter
+          }}
         </el-tag>
       </div>
     </div>
