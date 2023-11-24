@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import MyProject from '../MyProject.vue';
+import MarkdownCell from '../MarkdownCell.vue';
+import enMarkdown from './en.md?raw';
+import zhMarkdown from './zh.md?raw';
+import flowchart from './flowchart.png';
+const urls = {
+  'flowchart.png': flowchart
+};
 </script>
 
 <template>
   <MyProject project="pcode-viewer">
+    <MarkdownCell :en="enMarkdown" :zh="zhMarkdown" :urls="urls"></MarkdownCell>
   </MyProject>
 </template>
 
