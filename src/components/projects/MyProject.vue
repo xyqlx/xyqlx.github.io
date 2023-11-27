@@ -151,6 +151,52 @@ onUnmounted(() => {
   padding-left: 1rem;
   margin-top: 0;
   margin-bottom: 0;
+  list-style:none;
+}
+
+.toc-container :deep(li:before) {
+  /* color:#f00; font-family:Times New Roman; */
+  /* style of index */
+}
+
+.toc-container :deep(li) {
+  counter-increment:a 1;
+}
+
+.toc-container :deep(li:before) {
+  content:counter(a)". ";
+}
+
+.toc-container :deep(li li) {
+  counter-increment:b 1;
+}
+
+.toc-container :deep(li li:before) {
+  content:counter(a)"."counter(b)" ";
+}
+
+.toc-container :deep(li li li) {
+  counter-increment:c 1;
+}
+
+.toc-container :deep(li li li:before) {
+  content:counter(a)"."counter(b)"."counter(c)" ";
+}
+
+.toc-container :deep(li li li li) {
+  counter-increment:d 1;
+}
+
+.toc-container :deep(li li li li:before) {
+  content:counter(a)"."counter(b)"."counter(c)"."counter(d)" ";
+}
+
+.toc-container :deep(li li li li li) {
+  counter-increment:e 1;
+}
+
+.toc-container :deep(li li li li li:before) {
+  content:counter(a)"."counter(b)"."counter(c)"."counter(d)"."counter(e)" ";
 }
 
 .article-container {
