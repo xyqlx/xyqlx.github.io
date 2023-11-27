@@ -22,6 +22,7 @@ import excelColumnSplitterCover from './excel-column-splitter/cover.png';
 import candiesCover from './candies/cover.png';
 import geneticAlgorithmFunctionCover from './genetic-algorithm-function/cover.png';
 import TSPAPPCover from './tsp-app/cover.png';
+import pcodeViewerCover from './pcode-viewer/demo.png';
 
 export const projects: Project[] = [
     {
@@ -200,7 +201,8 @@ export const projects: Project[] = [
         description: {
             'en': "Online Interpreter for P-code Languages",
             'zh-CN': "类P-code语言在线解释器"
-        }
+        },
+        cover: pcodeViewerCover
     },
     {
         name: 'PL00WebIDE',

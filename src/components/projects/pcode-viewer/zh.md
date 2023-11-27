@@ -27,8 +27,8 @@
 
 #### 类P-code指令
 
-| PL0指令 | PL0解释 |
-| -- | -- | 
+| 类P-code指令 | 解释 |
+| -- | -- |
 | INT 0 A | 在栈顶开辟 A 个存储单元 |
 | OPR 0 0 | 结束被调用过程，返回调用点并退栈 |
 | CAL L A | 调用地址为 A 的过程，调用过程与被调用过程的层差为 L |
@@ -78,64 +78,64 @@
 
 | 寄存器 | 寄存器号 | 用途 |
 | -- | -- | -- |
-| $zero | 0 | 常量 0 |
-| $at | 1 | 保留给汇编器 |
-| $v0-$v1 | 2-3 | 函数调用返回值 |
-| $a0-$a3 | 4-7 | 函数调用参数 |
-| $t0-$t7 | 8-15 | 临时变量 |
-| $s0-$s7 | 16-23 | 保存变量 |
-| $t8-$t9 | 24-25 | 临时变量 |
-| $i0-$i1 | 26-27 | 保留给操作系统 |
-| $gp | 28 | 全局指针 |
-| $sp | 29 | 栈指针 |
-| $s8/$fp | 30 | 帧指针 |
-| $ra | 31 | 返回地址 |
+| \$zero | 0 | 常量 0 |
+| \$at | 1 | 保留给汇编器 |
+| \$v0-\$v1 | 2-3 | 函数调用返回值 |
+| \$a0-\$a3 | 4-7 | 函数调用参数 |
+| \$t0-\$t7 | 8-15 | 临时变量 |
+| \$s0-\$s7 | 16-23 | 保存变量 |
+| \$t8-\$t9 | 24-25 | 临时变量 |
+| \$i0-\$i1 | 26-27 | 保留给操作系统 |
+| \$gp | 28 | 全局指针 |
+| \$sp | 29 | 栈指针 |
+| \$s8/\$fp | 30 | 帧指针 |
+| \$ra | 31 | 返回地址 |
 
 #### MIPS指令
 
 | 指令 | 用途 |
 | -- | -- |
-| add $d,$s,$t | $d = $s + $t |
-| addi $t,$s,imm | $t = $s + imm |
-| sub $d,$s,$t | $d = $s - $t |
-| subi $t,$s,imm | $t = $s - imm |
-| mul $d,$s,$t | $d = $s * $t |
-| muli $t,$s,imm | $t = $s * imm |
-| div $d,$s,$t | $d = $s / $t |
-| divi $t,$s,imm | $t = $s / imm |
-| rem $d,$s,$t | $d = $s % $t |
-| remi $t,$s,imm | $t = $s % imm |
-| and $d,$s,$t | $d = $s & $t |
-| andi $t,$s,imm | $t = $s & imm |
-| or $d,$s,$t | $d = $s \| $t |
-| ori $t,$s,imm | $t = $s \| imm |
-| xor $d,$s,$t | $d = $s ^ $t |
-| xori $t,$s,imm | $t = $s ^ imm |
-| nor $d,$s,$t | $d = ~($s \| $t) |
-| sll $d,$t,shamt | $d = $t << shamt |
-| srl $d,$t,shamt | $d = $t >> shamt |
-| sra $d,$t,shamt | $d = $t >> shamt |
-| slt $d,$s,$t | $d = ($s < $t) ? 1 : 0 |
-| slti $t,$s,imm | $t = ($s < imm) ? 1 : 0 |
-| beq $s,$t,offset | if ($s == $t) pc += offset |
-| bne $s,$t,offset | if ($s != $t) pc += offset |
-| blez $s,offset | if ($s <= 0) pc += offset |
-| bgtz $s,offset | if ($s > 0) pc += offset |
-| bltz $s,offset | if ($s < 0) pc += offset |
-| bgez $s,offset | if ($s >= 0) pc += offset |
+| add \$d,\$s,\$t | \$d = \$s + \$t |
+| addi \$t,\$s,imm | \$t = \$s + imm |
+| sub \$d,\$s,\$t | \$d = \$s - \$t |
+| subi \$t,\$s,imm | \$t = \$s - imm |
+| mul \$d,\$s,\$t | \$d = \$s * \$t |
+| muli \$t,\$s,imm | \$t = \$s * imm |
+| div \$d,\$s,\$t | \$d = \$s / \$t |
+| divi \$t,\$s,imm | \$t = \$s / imm |
+| rem \$d,\$s,\$t | \$d = \$s % \$t |
+| remi \$t,\$s,imm | \$t = \$s % imm |
+| and \$d,\$s,\$t | \$d = \$s & \$t |
+| andi \$t,\$s,imm | \$t = \$s & imm |
+| or \$d,\$s,\$t | \$d = \$s \| \$t |
+| ori \$t,\$s,imm | \$t = \$s \| imm |
+| xor \$d,\$s,\$t | \$d = \$s ^ \$t |
+| xori \$t,\$s,imm | \$t = \$s ^ imm |
+| nor \$d,\$s,\$t | \$d = ~(\$s \| \$t) |
+| sll \$d,\$t,shamt | \$d = \$t << shamt |
+| srl \$d,\$t,shamt | \$d = \$t >> shamt |
+| sra \$d,\$t,shamt | \$d = \$t >> shamt |
+| slt \$d,\$s,\$t | \$d = (\$s < \$t) ? 1 : 0 |
+| slti \$t,\$s,imm | \$t = (\$s < imm) ? 1 : 0 |
+| beq \$s,\$t,offset | if (\$s == \$t) pc += offset |
+| bne \$s,\$t,offset | if (\$s != \$t) pc += offset |
+| blez \$s,offset | if (\$s <= 0) pc += offset |
+| bgtz \$s,offset | if (\$s > 0) pc += offset |
+| bltz \$s,offset | if (\$s < 0) pc += offset |
+| bgez \$s,offset | if (\$s >= 0) pc += offset |
 | j target | pc = target |
-| jal target | $ra = pc + 4; pc = target |
-| jr $s | pc = $s |
-| jalr $s | $ra = pc + 4; pc = $s |
-| mfhi $d | $d = hi |
-| mflo $d | $d = lo |
-| mthi $s | hi = $s |
-| mtlo $s | lo = $s |
-| lw $t,offset($s) | $t = Memory[$s + offset] |
-| sw $t,offset($s) | Memory[$s + offset] = $t |
-| li $t,imm | $t = imm |
-| la $t,label | $t = label |
-| move $d,$s | $d = $s |
+| jal target | \$ra = pc + 4; pc = target |
+| jr \$s | pc = \$s |
+| jalr \$s | \$ra = pc + 4; pc = \$s |
+| mfhi \$d | \$d = hi |
+| mflo \$d | \$d = lo |
+| mthi \$s | hi = \$s |
+| mtlo \$s | lo = \$s |
+| lw \$t,offset(\$s) | \$t = Memory[\$s + offset] |
+| sw \$t,offset(\$s) | Memory[\$s + offset] = \$t |
+| li \$t,imm | \$t = imm |
+| la \$t,label | \$t = label |
+| move \$d,\$s | \$d = \$s |
 | nop | 什么都不做 |
 | syscall | 系统调用 |
 
@@ -361,6 +361,10 @@ lit 0 1 # 注释
 
 调试状态下连续点击单步调试按钮将会一步步执行。
 
+![demo](demo.png)
+
+上面的图片是一个单步调试状态的例子，如图所示，当前正在执行的指令是`jpc 0 22`，即弹出栈顶的值，若为0则跳转到22行。因此指令区将栈顶标注为红色。
+
 ### 多步调试
 
 点击“运行N步”按钮将会连续执行N（在后面的文本框中设置）条指令并进入调试状态。
@@ -386,39 +390,39 @@ lit 0 1 # 注释
 
 ##### 运算类指令转换思路
 
-将MIPS的$sp寄存器作为栈顶，模拟类P-code的栈操作
+将MIPS的\$sp寄存器作为栈顶，模拟类P-code的栈操作
 
 例如，opr 0 4的解释为次栈顶的值乘以栈顶的值，结果存放次栈顶且栈顶指针-1，可以用以下MIPS指令模拟：
 
 ```mips
-lw $t0, ($sp)		# 栈顶入寄存器$t0
-subu $sp, $sp, 4	# 退栈
-lw $t1, ($sp)		# (原来的)次栈顶入寄存器
-mult $t0, $t1	# 寄存器乘法
-mflo $t0		# 取乘积低位
-sw $t0, ($sp) 	# 保存到栈顶
+lw $t0, ($sp)     # 栈顶入寄存器$t0
+subu $sp, $sp, 4  # 退栈
+lw $t1, ($sp)     # (原来的)次栈顶入寄存器
+mult $t0, $t1     # 寄存器乘法
+mflo $t0          # 取乘积低位
+sw $t0, ($sp)     # 保存到栈顶
 ```
 
 ##### 处理过程调用
 
 对于此类指令，类P-code解释器的做法是调用时将下一条指令的地址保存到新基底上的第三个地址，返回时取这个值跳转
 
-转换得到的MIPS的做法是调用时使用jal label指令，利用jr $ra做返回
+转换得到的MIPS的做法是调用时使用jal label指令，利用jr \$ra做返回
 
 这里利用了MIPS机制，不再需要手动模拟，但是缺点是无法正确转换手动修改地址或者混用数据和地址的类P-code代码。这也是上面说这个转换方案只能处理受限类P-code的原因。
 
 下面给出一个类P-code混用数据和地址的例子：
 
 ```mips
-0 jmp 0 4	# 转到主程序
-1 	lit 0 2	# 子程序：将2推入栈中
-2 	opr 0 2	# 修改返回地址+2
-3 	opr 0 0	# return
-4 int 0 3	# 主程序
-5 cal 0 1	# 调用子程序
-6 lit 0 3	# 原来应该返回的位置
-7 opr 0 14	# 输出3
-8 opr 0 0	# 实际返回的位置
+0 jmp 0 4     # 转到主程序
+1   lit 0 2   # 子程序：将2推入栈中
+2   opr 0 2   # 修改返回地址+2
+3   opr 0 0   # return
+4 int 0 3     # 主程序
+5 cal 0 1     # 调用子程序
+6 lit 0 3     # 原来应该返回的位置
+7 opr 0 14    # 输出3
+8 opr 0 0     # 实际返回的位置
 ```
 
 这里给出不支持混用数据和地址的理由：这类程序虽然实际上可行，但是并不会由PL/0生成。当然，这也可以视为本转换方案的局限性。
@@ -486,7 +490,7 @@ sw $t0, 24($t3)
 | Fibonacci | 15 | 28 | 120 | 69 | 41 |
 | GCD | 26 | 44 | 209 | 131 | 71 |
 
-其中，C程序生成的MIPS代码使用<https://godbolt.org/>工具
+\*其中，C程序生成的MIPS代码使用<https://godbolt.org/>工具
 
 #### PlantUML-基本流图
 
