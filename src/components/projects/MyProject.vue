@@ -248,6 +248,7 @@ a:hover {
 
   .article-container {
     width: 100%;
+    margin-left: 0;
   }
 
   .toc-container {
