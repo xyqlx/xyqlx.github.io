@@ -13,6 +13,7 @@ declare module 'vue' {
     ChocoberryVue: typeof import('./src/components/projects/chocoberry/ChocoberryVue.vue')['default']
     ChocolaTimer: typeof import('./src/components/projects/chocola-timer/ChocolaTimer.vue')['default']
     CocoaVue: typeof import('./src/components/projects/cocoa/CocoaVue.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
