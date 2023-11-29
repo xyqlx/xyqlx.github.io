@@ -77,8 +77,8 @@ const onScroll = () => {
         }
       });
       // scroll to this
-      const tocToFocusTop = tocToFocus.offsetTop;
-      const tocToFocusRect = tocToFocus.getBoundingClientRect();
+      const tocToFocusTop = tocToFocus?.offsetTop;
+      const tocToFocusRect = tocToFocus?.getBoundingClientRect();
       const tocRect = tocScrollbar.value?.$el.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       // if window height is larger than toc height, do nothing
