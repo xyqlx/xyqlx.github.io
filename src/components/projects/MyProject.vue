@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { toRefs, useSlots, onMounted, onUnmounted, type WatchStopHandle, watch } from 'vue';
+import { toRefs, useSlots, onMounted, ref, onUnmounted, type WatchStopHandle, watch } from 'vue';
 import { getProject } from './projects';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import { watchDebounced } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import { useMarkdownStore } from '@/stores/markdown';
+import { useThrottleScrollStore } from '@/stores/scroll';
 
 const props = defineProps<{
   project: string;
 }>();
+const { distance } = storeToRefs(useThrottleScrollStore());
+const pageProgress = ref(0);
 const { project } = toRefs(props);
 const currentProject = getProject(project.value);
 const shortcuts = [
@@ -28,9 +31,11 @@ const route = useRoute();
 const { tocUpdate } = storeToRefs(useMarkdownStore());
 let watcher: WatchStopHandle | undefined = undefined;
 let tocWatcher: WatchStopHandle | undefined = undefined;
+let scrollWatcher: WatchStopHandle | undefined = undefined;
+const articleContainer = ref();
+const tocScrollbar = ref();
 function updateToc() {
   const tocs = document.getElementsByClassName('table-of-contents');
-  console.log(tocs);
   const parent = document.querySelector('.toc-container nav ol');
   // clear parent
   while (parent?.firstChild) {
@@ -55,6 +60,43 @@ function updateToc() {
     }
   }
 }
+const onScroll = () => {
+  // get current top position
+  const anchors = document.querySelectorAll('.article-container a.header-anchor') as NodeListOf<HTMLAnchorElement>;
+  for (let i = 0; i < anchors.length; i++) {
+    const anchor = anchors[i];
+    const rect = anchor.getBoundingClientRect();
+    // if card is in viewport, break
+    if (rect.top > 0 && rect.top < window.innerHeight) {
+      const tocAnchors = document.querySelectorAll(`.toc-container a`);
+      const tocToFocus = tocAnchors[i] as HTMLAnchorElement;
+      tocToFocus?.classList.add('toc-active');
+      tocAnchors.forEach((tocAnchor) => {
+        if (tocAnchor !== tocToFocus) {
+          tocAnchor.classList.remove('toc-active');
+        }
+      });
+      // scroll to this
+      const tocToFocusTop = tocToFocus.offsetTop;
+      const tocToFocusRect = tocToFocus.getBoundingClientRect();
+      const tocRect = tocScrollbar.value?.$el.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      // if window height is larger than toc height, do nothing
+      // else try to make tocToFocus at the center of toc
+      if (tocRect && tocToFocusTop && tocRect.height < windowHeight) {
+        // console.log({
+        //   'focusTop': tocToFocusTop,
+        //   'tocTop': tocRect.top,
+        //   'tocHeight': tocRect.height,
+        //   'windowHeight': windowHeight,
+        // });
+        const offset = tocToFocusTop - tocRect.top - (windowHeight - tocToFocusRect.height) / 2;
+        tocScrollbar.value?.scrollTo({ top: offset });
+      }
+      break;
+    }
+  }
+};
 onMounted(() => {
   watcher = watch(() => route.hash, () => {
     if (route.hash !== '') {
@@ -73,10 +115,17 @@ onMounted(() => {
       maxWait: 200
     }
   );
+  scrollWatcher = watch(distance, () => {
+    const height = (articleContainer.value?.clientHeight ?? 0) - window.innerHeight;
+    const tempValue = Math.round(distance.value / height * 100);
+    pageProgress.value = tempValue > 100 ? 100 : tempValue;
+    onScroll();
+  });
 })
 onUnmounted(() => {
   watcher?.();
   tocWatcher?.();
+  scrollWatcher?.();
 });
 </script>
 
@@ -84,9 +133,11 @@ onUnmounted(() => {
   {
     "en": {
       "under construction": "This page is under construction.",
+      "contents": "Contents",
     },
     "zh-CN": {
       "under construction": "本页面正在建设中。",
+      "contents": "目录",
     }
   }
 </i18n>
@@ -94,13 +145,17 @@ onUnmounted(() => {
 <template>
   <div v-if="currentProject" class="project-container">
     <div class="toc-container">
-      <el-scrollbar height="90%">
+      <div class="toc-heading">
+        <h2>{{ t('contents') }}</h2>
+        <div class="page-progress">{{ pageProgress }}</div>
+      </div>
+      <el-scrollbar height="90%" ref="tocScrollbar">
         <nav>
           <ol></ol>
         </nav>
       </el-scrollbar>
     </div>
-    <div class="article-container">
+    <div class="article-container" ref="articleContainer">
       <div class="title-bar">
         <h1>{{ currentProject.name }}</h1>
         <div class="shortcuts">
@@ -134,6 +189,25 @@ onUnmounted(() => {
   height: 100%;
 }
 
+.toc-heading {
+  background: color-mix(in srgb, var(--color-background) 80%, transparent);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.page-progress {
+  font-size: 1.5rem;
+  font-style: italic;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .toc-container nav {
   background: color-mix(in srgb, var(--color-background) 80%, transparent);
   border-color: transparent;
@@ -152,6 +226,11 @@ onUnmounted(() => {
   margin-top: 0;
   margin-bottom: 0;
   list-style:none;
+}
+
+.toc-container :deep(a.toc-active) {
+  color: var(--color-text);
+  text-decoration: underline;
 }
 
 .toc-container :deep(li:before) {

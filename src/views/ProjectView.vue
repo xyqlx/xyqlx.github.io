@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ProjectSummary from '@/components/projects/ProjectSummary.vue';
 import { projects, type localeText } from '@/components/projects/projects';
-import { useDebounceScrollStore } from '@/stores/scroll';
+import { useThrottleScrollStore } from '@/stores/scroll';
 import { storeToRefs } from 'pinia';
 import { onMounted, onUnmounted, watch, ref, type Ref, type WatchStopHandle } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -60,7 +60,7 @@ function clearFilterTag() {
   router.replace({ query: { tag: undefined } });
 }
 
-const { distance } = storeToRefs(useDebounceScrollStore());
+const { distance } = storeToRefs(useThrottleScrollStore());
 
 const onScroll = () => {
   // get current top position
