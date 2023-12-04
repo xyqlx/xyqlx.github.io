@@ -23,6 +23,7 @@ import candiesCover from './candies/cover.png';
 import geneticAlgorithmFunctionCover from './genetic-algorithm-function/cover.png';
 import TSPAPPCover from './tsp-app/cover.png';
 import pcodeViewerCover from './pcode-viewer/demo.png';
+import pl00WebIDECover from './pl00-webide/cover.png';
 
 export const projects: Project[] = [
     {
@@ -214,7 +215,8 @@ export const projects: Project[] = [
         description: {
             'en': "Online IDE for extended PL/0 language",
             'zh-CN': "扩展的PL/0语言的在线IDE"
-        }
+        },
+        cover: pl00WebIDECover
     },
     {
         name: 'tsp_app',
