@@ -129,4 +129,9 @@ onMounted(() => {
 
 :deep(pre) {
   white-space: pre-wrap;
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.2rem;
+  padding: 0.5rem;
 }</style>
