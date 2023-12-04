@@ -94,12 +94,13 @@ export const projects: Project[] = [
     {
         name: 'sd-webui-websocket',
         component: () => import('./sd-webui-websocket/SDWebUIWebSocket.vue'),
-        tags: ['Stable Diffusion WebUI', 'WebSocket'],
+        tags: ['Stable Diffusion WebUI', 'WebSocket', 'Python', 'JavaScript'],
         github: "https://github.com/xyqlx/sd-webui-websocket",
         description: {
             'en': "WebSocket server for Stable Diffusion WebUI",
             'zh-CN': "用于Stable Diffusion WebUI的WebSocket服务器"
-        }
+        },
+        cover: "https://github.com/xyqlx/sd-webui-websocket/raw/main/README/open.png"
     },
     {
         name: 'underwater-fish-system',
