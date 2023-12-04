@@ -4,10 +4,10 @@ import { Sunrise, MoonNight } from '@element-plus/icons-vue';
 import { RouterLink, RouterView } from 'vue-router'
 import { useI18n } from 'vue-i18n';
 import { watch, ref, onMounted, onUnmounted, type WatchStopHandle } from 'vue';
-import debounce from 'lodash/debounce';
+import throttle from 'lodash/throttle';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
-import { useDebounceScrollStore } from './stores/scroll';
+import { useThrottleScrollStore } from './stores/scroll';
 const isDarkMode = useDark();
 const { locale } = useI18n({
   useScope: 'global',
@@ -23,9 +23,9 @@ watch(isChinese, (value) => {
   locale.value = value ? 'zh-CN' : 'en';
   updateHtmlLang();
 });
-const { distance, route } = storeToRefs(useDebounceScrollStore());
+const { distance, route } = storeToRefs(useThrottleScrollStore());
 const { hash } = useRoute();
-const onDebounceScroll = debounce((param: { scrollLeft: number, scrollTop: number }) => {
+const onThrottleScroll = throttle((param: { scrollLeft: number, scrollTop: number }) => {
   distance.value = param.scrollTop;
 }, 100);
 const scrollbar = ref();
@@ -74,7 +74,7 @@ onUnmounted(() => {
         </div>
       </div>
     </el-header>
-    <el-scrollbar height="100%" @scroll="onDebounceScroll" ref="scrollbar">
+    <el-scrollbar height="100%" @scroll="onThrottleScroll" ref="scrollbar">
       <el-main class="main">
         <RouterView />
       </el-main>
