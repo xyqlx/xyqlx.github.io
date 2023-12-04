@@ -20,11 +20,4 @@ const { src } = toRefs(props);
 video {
   width: 100%;
 }
-
-@media (min-width: 1024px) {
-  video {
-    width: 60%;
-    margin-left: 20%;
-  }
-}
 </style>
