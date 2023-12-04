@@ -91,22 +91,22 @@ Since the search results are limited to 20 items, adjacent search pages may not 
 
 ### Errors
 
-You will get used to them. (laughs)
+You will get used to them. :)
 
-However, there is an error xyq often encounters but doesn't know how to solve, and it goes like this:
+### A Successful Experience Contributing to an Open Source Project
+
+Previously, there was an error that xyqlx frequently encountered but didn't know how to solve. The error looked like this:
 
 ```text
 Unhandled exception. Microsoft.Playwright.PlaywrightException: System.InvalidOperationException: Cannot read incomplete UTF-16 JSON text as string with missing low surrogate.
    at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ReadIncompleteUTF16()
 ```
 
-Based on the subsequent error position, it can be seen that this error occurs when calling methods like GetAttribute from Playwright, and it throws an exception within Playwright while using System.Text.Json.
+Based on the error location, it seemed to occur when calling methods like `GetAttribute` in Playwright. The exception was thrown internally by Playwright when using `System.Text.JSON`. Upon further investigation, it was found that this error was due to an encoding issue with the JSON data. Each character in UTF-16 can be composed of multiple code units, and this particular error indicated that some code units were missing.
 
-Literally, this bug is quite annoying. For example, when playing videos automatically, this issue may suddenly occur, causing the program to crash. Additionally, it cannot be handled simply by catching the exception because after triggering this problem, Playwright will be in a corrupted state and unable to perform other operations. Furthermore, when performing actions such as searching or retrieving rankings, if one video's title does not meet the requirements, the entire program will fail to display the results and crash.
+This bug was quite annoying. For example, it could cause a sudden crash when automatically playing videos. Additionally, it couldn't be easily handled by simple exception handling because after triggering this issue, Playwright would be in a corrupted state and unable to perform other operations. Furthermore, when performing actions like searching or retrieving rankings, if a video's title didn't meet the requirements, the entire display would fail and crash. Here are a few examples: BV1yR4y1C7KX, BV1tC4y1Z7ti (possibly due to special characters like 𝓞𝓷𝓮 𝓚𝓲𝓼𝓼).
 
-So, under which circumstances will this issue occur?
-
-One possible cause is 𝓞𝓷𝓮 𝓚𝓲𝓼𝓼, such as BV1yR4y1C7KX or BV1tC4y1Z7ti. A simple way to reproduce this issue is to play them.
+To confirm the issue, TypeScript was tested, and it was verified that this problem only occurred when using Playwright.NET. An [issue](https://github.com/microsoft/playwright-dotnet/issues/2748) was raised, and the Playwright team was very efficient. The issue was submitted on November 7, 2023, and the next day, a pull request was created. On the third day, the issue was [fixed](https://github.com/microsoft/playwright/commit/5f527fedb1f6893219b69d735b1a9cdd81ad1466) (it turned out to be a bug in Playwright). In late November, Playwright and Playwright.NET released version 1.40.0. Simply upgrading the dependencies would prevent this problem from occurring again.
 
 ## Expectations
 

@@ -93,22 +93,20 @@ Spectre.Console为命令行界面提供了富文本支持
 
 习惯就好啦（
 
-不过有一个错误xyq经常遇到但是并不知道怎么解决，这个错误是这样的：
+### 一次成功的开源项目贡献经历
+
+此前有一个错误xyq经常遇到但是并不知道怎么解决，这个错误是这样的：
 
 ```text
 Unhandled exception. Microsoft.Playwright.PlaywrightException: System.InvalidOperationException: Cannot read incomplete UTF-16 JSON text as string with missing low surrogate.
    at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ReadIncompleteUTF16()
 ```
 
-根据其后报错位置可以看出大概是在调用PlayWright的GetAttribute等方法时，在PlayWright内部使用System.Text.JSON时抛出异常
+根据其后报错位置可以看出大概是在调用PlayWright的GetAttribute等方法时，在PlayWright内部使用System.Text.JSON时抛出异常。查了下字面意思上这是由于JSON数据在编码上出现错误，UTF-16的每个字符可能由多个码元组成，而上面的这个错误指的是缺失了一部分码元
 
-查了下字面意思上这是由于JSON数据在编码上出现错误，UTF-16的每个字符可能由多个码元组成，而上面的这个错误指的是缺失了一部分码元
+这个BUG还是相当恶心的，比如说在自动播放视频时，可能就会突然出现这个问题闪退。并且这个用简单的捕获异常还无法处理，因为在触发此问题后，PlayWright就会处于损坏状态，无法执行其他操作。还有就是在搜索/获取排行榜等操作执行完毕时，如果有一个视频的标题不符合要求就会整个都无法显示然后闪退。举几个例子，BV1yR4y1C7KX，BV1tC4y1Z7ti（可能是因为含有类似𝓞𝓷𝓮 𝓚𝓲𝓼𝓼的特殊字符）
 
-这个BUG还是相当恶心的，比如说在自动播放视频时，可能就会突然出现这个问题闪退。并且这个用简单的捕获异常还无法处理，因为在触发此问题后，PlayWright就会处于损坏状态，无法执行其他操作。还有就是在搜索/获取排行榜等操作执行完毕时，如果有一个视频的标题不符合要求就会整个都无法显示然后闪退
-
-那么在遇到哪些视频的时候会出现这个问题呢？
-
-𝓞𝓷𝓮 𝓚𝓲𝓼𝓼可能是触发这一问题的一种方式，比如说BV1yR4y1C7KX，BV1tC4y1Z7ti，一个简单的复现方式就是播放它
+同样拿TypeScript测试了下，验证了这个问题是使用Playwright.NET才会出现的问题，提了个[issue](https://github.com/microsoft/playwright-dotnet/issues/2748)，Playwright项目组的效率还是很高的，2023.11.7提交的issue，第二天就有pull request，第三天就能[修复](https://github.com/microsoft/playwright/commit/5f527fedb1f6893219b69d735b1a9cdd81ad1466)（结果是Playwright中的bug）。11月下旬Playwright和Playwright.NET发布了1.40.0版本，只需要升级依赖就不会再出现这个问题了
 
 ## 期望
 
