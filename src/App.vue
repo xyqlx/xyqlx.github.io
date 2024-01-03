@@ -93,12 +93,13 @@ onUnmounted(() => {
 .container {
   height: 100vh;
   background:
-    linear-gradient(45deg, var(--color-background-soft) 25%, transparent 25%) 0 0,
-    linear-gradient(135deg, transparent 75%, var(--color-background-soft) 75%) 0 0,
-    linear-gradient(45deg, transparent 75%, var(--color-background-soft) 75%) 0 0,
-    linear-gradient(135deg, var(--color-background-soft) 25%, transparent 25%) 0 0,
-    var(--color-background);
-  background-size: 20px 20px;
+    radial-gradient(at 35% 41%, var(--color-background) 24%, transparent 24%),
+    radial-gradient(at 65% 41%, var(--color-background) 24%, transparent 24%),
+    linear-gradient(45deg, var(--color-background-soft) 32%, transparent 32%) 0 0,
+    linear-gradient(135deg, transparent 68%, var(--color-background-soft) 68%) 0 0,
+    linear-gradient(0deg, var(--color-background) 50%, transparent 50%) 0 0,
+    var(--color-background-soft);
+  background-size: 30px 30px;
 }
 
 .functions {
