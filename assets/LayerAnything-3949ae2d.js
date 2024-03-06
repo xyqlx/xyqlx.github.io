@@ -1,0 +1,1 @@
+import{M as e}from"./MyProject-7350f725.js";import{m as r,z as t,A as o}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";const _=r({__name:"LayerAnything",setup(a){return(n,c)=>(t(),o(e,{project:"layer-anything"}))}});export{_ as default};
