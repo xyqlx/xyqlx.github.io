@@ -1,0 +1,1 @@
+import{M as e}from"./MyProject-fb3fa109.js";import{m as o,z as t,A as r}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";const _=o({__name:"OneNoteTagGUI",setup(a){return(n,c)=>(t(),r(e,{project:"OneNoteTagGUI"}))}});export{_ as default};

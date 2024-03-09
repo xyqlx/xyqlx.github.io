@@ -1,4 +1,4 @@
-import{M as e}from"./MyProject-7350f725.js";import{I as t}from"./IFrameCell-a8081f0f.js";import{M as i}from"./MarkdownCell-2eec6931.js";import{m as a,z as s,A as o,C as c,B as r,u as n}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";/* empty css             */const l=`## Introduction\r
+import{M as e}from"./MyProject-fb3fa109.js";import{I as t}from"./IFrameCell-0f676881.js";import{M as i}from"./MarkdownCell-5aeeb348.js";import{m as a,z as s,A as o,C as c,B as r,u as n}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";/* empty css             */const l=`## Introduction\r
 \r
 GPU server monitoring system available in the laboratory.\r
 \r

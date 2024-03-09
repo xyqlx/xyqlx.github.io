@@ -1,4 +1,4 @@
-import{M as e}from"./MyProject-7350f725.js";import{M as r}from"./MarkdownCell-2eec6931.js";import{m as t,z as o,A as s,C as i,B as a,u as n}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";const l=`![logo](https://raw.githubusercontent.com/xyqlx/asoul-cursors/master/src/assets/images/icon128.png)\r
+import{M as e}from"./MyProject-fb3fa109.js";import{M as r}from"./MarkdownCell-5aeeb348.js";import{m as t,z as o,A as s,C as i,B as a,u as n}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";const l=`![logo](https://raw.githubusercontent.com/xyqlx/asoul-cursors/master/src/assets/images/icon128.png)\r
 \r
 ## Introduction\r
 \r

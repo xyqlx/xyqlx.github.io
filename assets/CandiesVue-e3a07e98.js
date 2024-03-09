@@ -1,4 +1,4 @@
-import{M as r}from"./MyProject-7350f725.js";import{M as o}from"./MarkdownCell-2eec6931.js";import{V as a}from"./VideoCell-61df5776.js";import{m as s,z as i,A as d,C as c,B as e,u as n}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";const l=`## Introduction\r
+import{M as r}from"./MyProject-fb3fa109.js";import{M as o}from"./MarkdownCell-5aeeb348.js";import{V as a}from"./VideoCell-cfb42aaf.js";import{m as s,z as i,A as d,C as c,B as e,u as n}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";const l=`## Introduction\r
 \r
 Records tool for xyqlx.\r
 \r
