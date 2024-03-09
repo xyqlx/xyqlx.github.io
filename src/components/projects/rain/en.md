@@ -26,6 +26,18 @@ open `index.html` in your browser
 | raindropVelocity | the vertical velocity of rain |
 | windVelocity | the horizontal velocity of rain |
 
+## Performance Optimization
+
+In the old version, when the value of piova reached 500, the FPS would noticeably decrease. Upon inspecting the code, it was discovered that each raindrop was being drawn using a separate draw call, leading to performance degradation.
+
+Therefore, in [commit f6a5249](https://github.com/xyqlx/rain/commit/f6a524925783ad5661ed6425d0c03d1b756d931c), the change from "drawing gl.TRIANGLE_FAN in a for loop" to "drawing gl.TRIANGLES in a single call" significantly improved performance 😙. Now, it can easily handle over 10,000 piova.
+
+## Other Implemented Features
+
+- Display of FPS and the number of raindrops on the field
+- Ability to set parameters using URL Query Strings
+- Addition of input boxes to set parameters beyond the slider range, triggering animations when the slider's upper and lower limits are changed.
+
 ## Problems
 
 - If you toggle the page to background and then toggle back, the animation may be paused
