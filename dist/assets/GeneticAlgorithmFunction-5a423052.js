@@ -1,4 +1,4 @@
-import{M as r}from"./MyProject-7350f725.js";import{I as t}from"./IFrameCell-a8081f0f.js";import{M as o}from"./MarkdownCell-2eec6931.js";import{m as a,z as i,A as s,C as l,B as e,u as n}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";/* empty css             */const u=`## Introduction\r
+import{M as r}from"./MyProject-fb3fa109.js";import{I as t}from"./IFrameCell-0f676881.js";import{M as o}from"./MarkdownCell-5aeeb348.js";import{m as a,z as i,A as s,C as l,B as e,u as n}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";/* empty css             */const u=`## Introduction\r
 \r
 Undergraduate course project that utilizes genetic algorithm to visualize the maximum value within a function interval on a web page.\r
 \r

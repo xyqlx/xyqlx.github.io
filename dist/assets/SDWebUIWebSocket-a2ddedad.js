@@ -1,4 +1,4 @@
-import{M as t}from"./MyProject-7350f725.js";import{V as r}from"./VideoCell-61df5776.js";import{M as s}from"./MarkdownCell-2eec6931.js";import{m as i,z as o,A as a,C as p,B as e,u as n}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";const u=`## Introduction\r
+import{M as t}from"./MyProject-fb3fa109.js";import{V as r}from"./VideoCell-cfb42aaf.js";import{M as s}from"./MarkdownCell-5aeeb348.js";import{m as i,z as o,A as a,C as p,B as e,u as n}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";const u=`## Introduction\r
 \r
 This is an extension for [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) (referred to as SDWebUI), which allows SDWebUI instances to communicate with other web pages. This plugin utilizes the WebSocket protocol to establish real-time connections.\r
 \r

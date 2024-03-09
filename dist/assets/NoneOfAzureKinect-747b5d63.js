@@ -1,1 +1,0 @@
-import{M as e}from"./MyProject-7350f725.js";import{m as o,z as r,A as t}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";const _=o({__name:"NoneOfAzureKinect",setup(n){return(c,a)=>(r(),t(e,{project:"none-of-azure-kinect"}))}});export{_ as default};

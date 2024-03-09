@@ -1,4 +1,4 @@
-import{M as e}from"./MyProject-7350f725.js";import{I as t}from"./IFrameCell-a8081f0f.js";import{M as i}from"./MarkdownCell-2eec6931.js";import{m as a,z as o,A as s,C as c,B as n,u as r}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";/* empty css             */const p=`## Introduction\r
+import{M as e}from"./MyProject-fb3fa109.js";import{I as t}from"./IFrameCell-0f676881.js";import{M as i}from"./MarkdownCell-5aeeb348.js";import{m as a,z as o,A as s,C as c,B as n,u as r}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";/* empty css             */const d=`## Introduction\r
 \r
 A simple example of raining effect simulation using WebGL\r
 \r
@@ -25,6 +25,18 @@ open \`index.html\` in your browser\r
 | piova | the amount of raindrops |\r
 | raindropVelocity | the vertical velocity of rain |\r
 | windVelocity | the horizontal velocity of rain |\r
+\r
+## Performance Optimization\r
+\r
+In the old version, when the value of piova reached 500, the FPS would noticeably decrease. Upon inspecting the code, it was discovered that each raindrop was being drawn using a separate draw call, leading to performance degradation.\r
+\r
+Therefore, in [commit f6a5249](https://github.com/xyqlx/rain/commit/f6a524925783ad5661ed6425d0c03d1b756d931c), the change from "drawing gl.TRIANGLE_FAN in a for loop" to "drawing gl.TRIANGLES in a single call" significantly improved performance 😙. Now, it can easily handle over 10,000 piova.\r
+\r
+## Other Implemented Features\r
+\r
+- Display of FPS and the number of raindrops on the field\r
+- Ability to set parameters using URL Query Strings\r
+- Addition of input boxes to set parameters beyond the slider range, triggering animations when the slider's upper and lower limits are changed.\r
 \r
 ## Problems\r
 \r
@@ -62,7 +74,7 @@ open \`index.html\` in your browser\r
 Actually, xyqlx wants to add rain sound.\r
 \r
 xyqlx is struggling whether to simulate it using pure sine waves or use existing rain sound effects.\r
-`,h=`## 介绍\r
+`,p=`## 介绍\r
 \r
 用WebGL模拟下雨效果的简单示例\r
 \r
@@ -89,6 +101,18 @@ WebGL挺有趣的，但是从兼容性和开发难度上考虑，也许类似Pix
 | piova | 雨滴的数量 |\r
 | raindropVelocity | 雨滴的垂直速度 |\r
 | windVelocity | 雨的水平速度 |\r
+\r
+## 性能优化\r
+\r
+在旧版本中，当piova的值达到500时，FPS会明显下降。检查代码后发现，每个雨滴都是一个单独的绘制调用，这样会导致性能下降\r
+\r
+因此在[f6a5249](https://github.com/xyqlx/rain/commit/f6a524925783ad5661ed6425d0c03d1b756d931c)中把“在for循环中绘制gl.TRIANGLE_FAN”改为“在单个调用中绘制gl.TRIANGLES”，性能提高了很多😙, 现在可以轻松处理10000多个piova\r
+\r
+## 实现的其他功能\r
+\r
+- FPS和场上雨滴数量显示\r
+- 可以用URL Query String来设置参数\r
+- 添加输入框，来设置超出滑块范围的参数，并且在滑块上下限改变时触发动画\r
 \r
 ## 问题\r
 \r
@@ -126,4 +150,4 @@ WebGL挺有趣的，但是从兼容性和开发难度上考虑，也许类似Pix
 其实还挺想加入雨声的\r
 \r
 在纠结是用纯粹的正弦波模拟呢，还是用现有的雨声音效呢\r
-`,x=a({__name:"RainVue",setup(m){return(l,d)=>(o(),s(e,{project:"rain"},{default:c(()=>[n(t,{src:"https://xyqlx.github.io/rain/","white-background":!0}),n(i,{en:r(p),zh:r(h)},null,8,["en","zh"])]),_:1}))}});export{x as default};
+`,x=a({__name:"RainVue",setup(h){return(l,m)=>(o(),s(e,{project:"rain"},{default:c(()=>[n(t,{src:"https://xyqlx.github.io/rain/","white-background":!0}),n(i,{en:r(d),zh:r(p)},null,8,["en","zh"])]),_:1}))}});export{x as default};

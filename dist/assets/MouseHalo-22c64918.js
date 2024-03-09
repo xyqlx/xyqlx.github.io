@@ -1,4 +1,4 @@
-import{M as r}from"./MyProject-7350f725.js";import{M as e}from"./MarkdownCell-2eec6931.js";import{m as t,z as o,A as i,C as s,B as a,u as n}from"./index-64cee8c8.js";import"./tag-ecb2b4e0.js";const m=`## Introduction\r
+import{M as r}from"./MyProject-fb3fa109.js";import{M as e}from"./MarkdownCell-5aeeb348.js";import{m as t,z as o,A as i,C as s,B as a,u as n}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";const m=`## Introduction\r
 \r
 Display the input method's Chinese and English status and copy prompt near the mouse.\r
 \r
