@@ -10,6 +10,7 @@ This website is currently under construction. Please check back later.
 
 ```bash
 npm run build
+git commit -m "🚀deploy updated contents"
 git push
 git subtree push --prefix dist origin gh-pages
 ```
