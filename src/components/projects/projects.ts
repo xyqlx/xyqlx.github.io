@@ -262,7 +262,8 @@ export const projects: Project[] = [
             'en': 'OneNote Object Model',
             'zh-CN': 'OneNote对象模型'
         }
-    }
+    },
+    // add new project here
 ]
 
 export function getProject(name: string): Project | undefined {
