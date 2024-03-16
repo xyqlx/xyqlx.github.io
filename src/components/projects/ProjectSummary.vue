@@ -11,7 +11,7 @@ const props = defineProps<{
 }>();
 const { project } = toRefs(props);
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const isDarkMode = useDark();
 const router = useRouter();
 
@@ -19,8 +19,24 @@ function navigate() {
   router.push(`/project/${project.value.name}`);
 }
 
+const cover = ref<HTMLElement | null>(null);
+
 const imageLoading = ref(project.value.cover ? true : false);
+
 </script>
+
+<i18n>
+  {
+    "en": {
+      "loading": "Loading...",
+      "loading-failed": "Loading failed"
+    },
+    "zh": {
+      "loading": "加载中...",
+      "loading-failed": "加载失败"
+    }
+  }
+</i18n>
 
 <template>
   <div :name="project.name" class="card" @click="navigate()">
@@ -43,8 +59,8 @@ const imageLoading = ref(project.value.cover ? true : false);
         </a>
         <a v-if="project.gitee" :href="project.gitee" @click.stop=";">
           <el-icon>
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72px" height="72px"
-              viewBox="0 0 72 72" version="1.1">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72px"
+              height="72px" viewBox="0 0 72 72" version="1.1">
               <title>logo_gitee_g_red@1x</title>
               <g id="LOGO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Artboard-7" transform="translate(-192.000000, -115.000000)" fill="#C71D23">
@@ -76,11 +92,17 @@ const imageLoading = ref(project.value.cover ? true : false);
     <div class="description" v-if="project.description">
       {{ (project.description as any)[locale] }}
     </div>
-    <div class="cover" :class="imageLoading ? 'loading' : ''" v-loading="!project.cover && imageLoading"
-      element-loading-background="rgba(123, 123, 123, 0.08)" element-loading-text="Loading...">
+    <div class="cover" ref="cover" :class="imageLoading ? 'loading' : ''">
       <template v-if="project.cover">
-        <el-image :src="project.cover" alt="cover" loading="lazy" @load="imageLoading = false"
-          @error="imageLoading = false">
+        <div v-if="imageLoading" class="loading-tips">
+          <div class="loading-spinner"></div>
+          {{ t('loading') }}
+        </div>
+        <el-image :src="project.cover" alt="cover" loading="lazy"
+          @load="imageLoading = false" @error="imageLoading = false">
+          <template #error>
+            <div>{{ t('loading-failed') }}</div>
+          </template>
         </el-image>
       </template>
       <template v-else>
@@ -172,7 +194,39 @@ const imageLoading = ref(project.value.cover ? true : false);
 }
 
 .cover.loading {
-  height: 180px;
+  background-color: rgba(123, 123, 123, 0.08);
+  min-height: 180px;
+}
+
+.cover.loading .el-image {
+  /* I don't know why but el-image sometimes become white when loads */
+  opacity: 0;
+}
+
+.loading-tips {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.loading-spinner {
+  /* balance the '...' */
+  margin-right: 0.75em;
+  border: 3px solid transparent;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border-left-color: var(--color-text);
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .cover>img {
@@ -224,4 +278,5 @@ const imageLoading = ref(project.value.cover ? true : false);
   .card {
     width: min(90%, 90vw);
   }
-}</style>
+}
+</style>
