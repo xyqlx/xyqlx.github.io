@@ -1,1 +1,0 @@
-import{M as e}from"./MyProject-1e418308.js";import{m as o,z as t,A as r}from"./index-d06a3c0e.js";import"./tag-5b448513.js";const _=o({__name:"OneNoteObjectModel",setup(c){return(n,a)=>(t(),r(e,{project:"onom"}))}});export{_ as default};
