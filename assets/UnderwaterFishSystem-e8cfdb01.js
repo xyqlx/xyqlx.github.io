@@ -1,0 +1,1 @@
+import{M as e}from"./MyProject-1e418308.js";import{m as r,z as t,A as o}from"./index-d06a3c0e.js";import"./tag-5b448513.js";const _=r({__name:"UnderwaterFishSystem",setup(s){return(a,m)=>(t(),o(e,{project:"underwater-fish-system"}))}});export{_ as default};

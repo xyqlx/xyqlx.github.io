@@ -1,1 +1,0 @@
-import{M as o}from"./MyProject-fb3fa109.js";import{m as e,z as r,A as t}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";const _=e({__name:"CocoaVue",setup(a){return(c,p)=>(r(),t(o,{project:"Cocoa"}))}});export{_ as default};
