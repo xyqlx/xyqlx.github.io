@@ -1,1 +1,0 @@
-import{M as o}from"./MyProject-fb3fa109.js";import{m as t,z as r,A as e}from"./index-3dad54d1.js";import"./tag-cb395b6c.js";const _=t({__name:"PythonTutorial",setup(a){return(n,p)=>(r(),e(o,{project:"python-tutorial"}))}});export{_ as default};
