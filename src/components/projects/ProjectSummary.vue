@@ -76,7 +76,7 @@ const imageLoading = ref(project.value.cover ? true : false);
     <div class="description" v-if="project.description">
       {{ (project.description as any)[locale] }}
     </div>
-    <div class="cover" :class="imageLoading ? 'loading' : ''" v-loading="imageLoading"
+    <div class="cover" :class="imageLoading ? 'loading' : ''" v-loading="!project.cover && imageLoading"
       element-loading-background="rgba(123, 123, 123, 0.08)" element-loading-text="Loading...">
       <template v-if="project.cover">
         <el-image :src="project.cover" alt="cover" loading="lazy" @load="imageLoading = false"
