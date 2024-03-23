@@ -31,7 +31,7 @@ const imageLoading = ref(project.value.cover ? true : false);
       "loading": "Loading...",
       "loading-failed": "Loading failed"
     },
-    "zh": {
+    "zh-CN": {
       "loading": "加载中...",
       "loading-failed": "加载失败"
     }
