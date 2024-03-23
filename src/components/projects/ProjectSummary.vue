@@ -99,7 +99,8 @@ const imageLoading = ref(project.value.cover ? true : false);
           {{ t('loading') }}
         </div>
         <el-image :src="project.cover" alt="cover" loading="lazy"
-          @load="imageLoading = false" @error="imageLoading = false">
+          @load="imageLoading = false" @error="imageLoading = false"
+          v-show="!imageLoading">
           <template #error>
             <div>{{ t('loading-failed') }}</div>
           </template>
