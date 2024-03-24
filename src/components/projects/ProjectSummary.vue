@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { type localeText, type Project } from './projects';
-import { toRefs, ref } from 'vue';
+import { toRefs, ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useDark } from '@vueuse/core';
 import { VideoPlay } from '@element-plus/icons-vue';
@@ -22,6 +22,26 @@ function navigate() {
 const cover = ref<HTMLElement | null>(null);
 
 const imageLoading = ref(project.value.cover ? true : false);
+let observer: ResizeObserver | null = null;
+
+onMounted(() => {
+  if (cover.value) {
+    const elImage = cover.value.querySelector('.el-image');
+    if (elImage) {
+      // watch width
+      observer = new ResizeObserver(() => {
+        if (elImage.clientWidth > 0) {
+          imageLoading.value = false;
+        }
+      });
+      observer.observe(elImage);
+    }
+  }
+});
+
+onUnmounted(() => {
+  observer?.disconnect();
+});
 
 </script>
 
@@ -98,9 +118,9 @@ const imageLoading = ref(project.value.cover ? true : false);
           <div class="loading-spinner"></div>
           {{ t('loading') }}
         </div>
-        <el-image :src="project.cover" alt="cover" loading="lazy"
-          @load="imageLoading = false" @error="imageLoading = false"
-          v-show="!imageLoading">
+
+        <el-image :src="project.cover" alt="cover" loading="lazy" @load="imageLoading = false"
+          @error="imageLoading = false">
           <template #error>
             <div>{{ t('loading-failed') }}</div>
           </template>
@@ -199,13 +219,18 @@ const imageLoading = ref(project.value.cover ? true : false);
   min-height: 180px;
 }
 
+.cover .el-image {
+  transition: opacity 0.3s ease-in-out;
+}
 .cover.loading .el-image {
   /* I don't know why but el-image sometimes become white when loads */
   opacity: 0;
 }
 
+
 .loading-tips {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -226,8 +251,13 @@ const imageLoading = ref(project.value.cover ? true : false);
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .cover>img {
